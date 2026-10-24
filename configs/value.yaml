@@ -1,0 +1,44 @@
+# Phase 8: survival model and customer lifetime value (CLTV).
+#
+# CLTV here = expected discounted margin over `horizon_months` IF the customer renews at
+# the current expiry (value conditional on staying). Phase 9 then values the risk as
+# expected_value_at_risk = P(churn) x CLTV.
+
+fit_snapshot: A            # Cox model fitted on subscription spells before A's cutoff
+score_snapshots: [A, B]    # A for the revenue backtest, B for prioritization
+
+horizon_months: 12
+annual_discount_rate: 0.10
+# PLACEHOLDER: gross margin on subscription revenue (not in the data). Replace with the
+# finance figure; only the scale of CLTV changes, not the ranking.
+margin: 0.70
+days_per_month: 30
+
+# Users whose latest plan was free / list price 0 are valued at the plan's list price per
+# day when > 0, else at the median paid monthly price of snapshot A (assumes conversion).
+free_user_value: list_price_then_median
+
+cox:
+  gap_days: 30
+  min_first_spell_start: 2015-03-01   # left-truncation rule for fitting (as Phase 3)
+  penalizer: 0.01
+  top_channels: 4
+  ph_test_sample: 20000
+  seed: 42
+
+# Formula method: future monthly renewal rate = 1 - churn rate of the user's segment in
+# the fit snapshot (segment = auto-renew x plan-length bucket).
+formula_segments:
+  min_users: 200     # smaller segments use the overall renewal rate (too few to estimate)
+  plan_buckets: [{name: "under 30 days", max_days: 29}, {name: "30 days", max_days: 30},
+                 {name: "over 30 days", max_days: 100000}]
+
+backtest:
+  snapshot: A
+  horizon_days: 59           # Feb 1 - Mar 31 2017: the revenue window the data covers
+
+outputs:
+  value_dir: data/processed/{mode}/value
+  tables_dir: reports/value
+  figures_dir: reports/figures
+  dpi: 150

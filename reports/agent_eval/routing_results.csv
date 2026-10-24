@@ -1,0 +1,7 @@
+question,expected,got,ok
+What is the churn rate in snapshot A?,analyst,analyst,True
+Design an A/B test with a holdout for the outreach plan,planner,planner,True
+Is there data drift? Should we retrain?,monitoring,monitoring,True
+Tell me about customer <msno>,copilot,copilot,True
+Average CLTV by quadrant,analyst,analyst,True
+Write an incident note on the PSI alerts,monitoring,monitoring,True

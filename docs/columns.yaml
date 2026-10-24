@@ -1,0 +1,81 @@
+# Hand-written column documentation, merged with generated statistics into
+# docs/data_dictionary.md by `python -m churnlens.analysis.audit`.
+# Meanings follow the competition's data description. Feature-level docs
+# (definition, rationale, leakage risk) are added in Phase 5.
+
+train:
+  description: Churn labels for users whose membership expires in February 2017 (snapshot A).
+  grain: one row per user
+  columns:
+    msno: {meaning: user id (hashed)}
+    is_churn:
+      meaning: 1 = churned (no new valid subscription within 30 days after expiry), 0 = renewed
+      notes: Target. Used as provided; the definition is verified against transactions in Phase 2.
+
+train_v2:
+  description: Churn labels for users whose membership expires in March 2017 (snapshot B, held-out test).
+  grain: one row per user
+  columns:
+    msno: {meaning: user id (hashed)}
+    is_churn: {meaning: same definition as train, notes: Target for the out-of-time test set.}
+
+members_v3:
+  description: Demographics and registration info. One snapshot of member attributes, not time-stamped.
+  grain: one row per user
+  columns:
+    msno: {meaning: user id (hashed)}
+    city: {meaning: city code (anonymised)}
+    bd:
+      meaning: age
+      notes: Competition notes say values range from -7000 to 2015; implausible values flagged in the audit.
+    gender: {meaning: male / female, notes: Frequently missing.}
+    registered_via: {meaning: registration channel code}
+    registration_init_time:
+      meaning: registration date (YYYYMMDD)
+      notes: Some dates fall after the snapshot cutoffs; leakage risk if used naively.
+
+transactions:
+  description: Payment transactions up to 2017-02-28.
+  grain: one row per transaction (no natural key)
+  columns: &txn_columns
+    msno: {meaning: user id (hashed)}
+    payment_method_id: {meaning: payment method code}
+    payment_plan_days: {meaning: length of the membership plan in days}
+    plan_list_price: {meaning: list price in New Taiwan Dollars (NTD)}
+    actual_amount_paid: {meaning: amount actually paid in NTD}
+    is_auto_renew: {meaning: 1 if the plan auto-renews}
+    transaction_date: {meaning: transaction date (YYYYMMDD)}
+    membership_expire_date:
+      meaning: membership expiry date after this transaction (YYYYMMDD)
+      notes: Contains implausible values such as 1970-01-01; see audit.
+    is_cancel:
+      meaning: 1 if the user cancelled the membership in this transaction
+      notes: Cancellations inside a label window must never enter features.
+
+transactions_v2:
+  description: Payment transactions up to 2017-03-31. Overlaps the v1 file; deduplicated in Phase 1.
+  grain: one row per transaction (no natural key)
+  columns: *txn_columns
+
+user_logs:
+  description: Daily listening logs, filtered to the configured log window (raw file covers up to 2017-02-28).
+  grain: one row per user per day (expected; duplicates flagged in the audit)
+  columns: &log_columns
+    msno: {meaning: user id (hashed)}
+    date: {meaning: listening date (YYYYMMDD)}
+    num_25: {meaning: songs played < 25% of their length}
+    num_50: {meaning: songs played 25–50% of their length}
+    num_75: {meaning: songs played 50–75% of their length}
+    num_985: {meaning: songs played 75–98.5% of their length}
+    num_100: {meaning: songs played > 98.5% of their length}
+    num_unq: {meaning: unique songs played}
+    total_secs:
+      meaning: total seconds played
+      notes: Known extreme and negative outliers; see audit.
+
+user_logs_v2:
+  description: >-
+    Daily listening logs for March 2017. SCORING ONLY: overlaps the snapshot B label period and
+    must never be used for training features of snapshot A or B.
+  grain: one row per user per day
+  columns: *log_columns

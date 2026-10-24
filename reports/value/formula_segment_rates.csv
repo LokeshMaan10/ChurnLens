@@ -1,0 +1,7 @@
+segment,users,churn_rate,renewal_rate,uses_overall_rate
+auto-renew / 30 days,87960,0.03085493406,0.9691450659,False
+auto-renew / over 30 days,1,1,0.9357559895,True
+manual / 30 days,8524,0.2672454247,0.7327545753,False
+manual / over 30 days,2269,0.4614367563,0.5385632437,False
+manual / under 30 days,382,0.7146596859,0.2853403141,False
+none / no plan,204,0.3382352941,0.6617647059,False

@@ -1,0 +1,40 @@
+# Phase 1 cleaning rules. Every rule is documented in docs/cleaning_rules.md
+# (generated from the rule list in src/churnlens/data/clean.py) with row counts.
+
+# Ages outside this range become NULL (`bd` is kept raw as `bd_raw`).
+plausible_age:
+  min: 10
+  max: 90
+
+# Daily total_secs above this are capped (a day has 86,400 seconds); `secs_capped` flags it.
+max_seconds_per_day: 86400
+
+# Expiry dates before this become NULL (e.g. 1970-01-01); `expire_implausible` flags it.
+min_plausible_date: 2004-01-01
+
+# Which transaction files feed the clean `transactions` table.
+#   v1_then_v2: all v1 rows, plus v2 rows dated AFTER v1_coverage_end (default, leak-free)
+#   combined:   v1 + v2 in full, deduplicated (leaks: see below)
+#   v1_only:    v1 only (no March 2017 transactions at all)
+# Audit finding: v2 rows dated before 2017-03-01 that are absent from v1 all carry
+# expiry dates >= 2017-04-01, i.e. later restatements that can encode snapshot B's
+# label. v1_then_v2 keeps pre-cutoff history from v1 alone and uses v2 only for the
+# month v1 does not cover (needed for label verification and live scoring).
+transactions_source: v1_then_v2
+
+# Last transaction_date covered by transactions.csv (v1). Max observed: 2017-02-28.
+v1_coverage_end: 2017-02-28
+
+# When v1 and v2 hold the same transaction (identical on every field except
+# membership_expire_date), keep the version from this file and set `restated`.
+#   v2: latest export wins (consistent with `combined`)
+#   v1: earliest export wins
+restatement_keep: v2
+
+# Rows per batch when validating Parquet with pandera (bounds memory).
+validation_batch_rows: 1000000
+
+outputs:
+  clean_dir: data/interim/{mode}/clean
+  database: data/interim/{mode}/churnlens.duckdb
+  rules_md: docs/cleaning_rules.md

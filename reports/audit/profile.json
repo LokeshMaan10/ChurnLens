@@ -1,0 +1,1055 @@
+{
+  "profiles": {
+    "train": {
+      "table": "train",
+      "rows": 99340,
+      "columns": [
+        {
+          "name": "msno",
+          "type": "VARCHAR",
+          "nulls": 0,
+          "distinct": 99340,
+          "min": null,
+          "max": null,
+          "empty_strings": 0
+        },
+        {
+          "name": "is_churn",
+          "type": "TINYINT",
+          "nulls": 0,
+          "distinct": 2,
+          "min": 0,
+          "max": 1,
+          "empty_strings": null
+        }
+      ],
+      "full_row_duplicates": 0,
+      "key_columns": [
+        "msno"
+      ],
+      "key_duplicates": 0,
+      "unique_msno": 99340,
+      "date_ranges": {}
+    },
+    "train_v2": {
+      "table": "train_v2",
+      "rows": 97237,
+      "columns": [
+        {
+          "name": "msno",
+          "type": "VARCHAR",
+          "nulls": 0,
+          "distinct": 97237,
+          "min": null,
+          "max": null,
+          "empty_strings": 0
+        },
+        {
+          "name": "is_churn",
+          "type": "TINYINT",
+          "nulls": 0,
+          "distinct": 2,
+          "min": 0,
+          "max": 1,
+          "empty_strings": null
+        }
+      ],
+      "full_row_duplicates": 0,
+      "key_columns": [
+        "msno"
+      ],
+      "key_duplicates": 0,
+      "unique_msno": 97237,
+      "date_ranges": {}
+    },
+    "members_v3": {
+      "table": "members_v3",
+      "rows": 677007,
+      "columns": [
+        {
+          "name": "msno",
+          "type": "VARCHAR",
+          "nulls": 0,
+          "distinct": 677007,
+          "min": null,
+          "max": null,
+          "empty_strings": 0
+        },
+        {
+          "name": "city",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 21,
+          "min": 1,
+          "max": 22,
+          "empty_strings": null
+        },
+        {
+          "name": "bd",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 163,
+          "min": -540,
+          "max": 2014,
+          "empty_strings": null
+        },
+        {
+          "name": "gender",
+          "type": "VARCHAR",
+          "nulls": 0,
+          "distinct": 3,
+          "min": "",
+          "max": "male",
+          "empty_strings": 442091
+        },
+        {
+          "name": "registered_via",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 15,
+          "min": 1,
+          "max": 19,
+          "empty_strings": null
+        },
+        {
+          "name": "registration_init_time",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 4760,
+          "min": 20040326,
+          "max": 20170429,
+          "empty_strings": null
+        }
+      ],
+      "full_row_duplicates": 0,
+      "key_columns": [
+        "msno"
+      ],
+      "key_duplicates": 0,
+      "unique_msno": 677007,
+      "date_ranges": {
+        "registration_init_time": [
+          20040326,
+          20170429
+        ]
+      }
+    },
+    "transactions": {
+      "table": "transactions",
+      "rows": 2156008,
+      "columns": [
+        {
+          "name": "msno",
+          "type": "VARCHAR",
+          "nulls": 0,
+          "distinct": 236651,
+          "min": null,
+          "max": null,
+          "empty_strings": 0
+        },
+        {
+          "name": "payment_method_id",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 40,
+          "min": 1,
+          "max": 41,
+          "empty_strings": null
+        },
+        {
+          "name": "payment_plan_days",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 34,
+          "min": 0,
+          "max": 450,
+          "empty_strings": null
+        },
+        {
+          "name": "plan_list_price",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 47,
+          "min": 0,
+          "max": 2000,
+          "empty_strings": null
+        },
+        {
+          "name": "actual_amount_paid",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 47,
+          "min": 0,
+          "max": 2000,
+          "empty_strings": null
+        },
+        {
+          "name": "is_auto_renew",
+          "type": "TINYINT",
+          "nulls": 0,
+          "distinct": 2,
+          "min": 0,
+          "max": 1,
+          "empty_strings": null
+        },
+        {
+          "name": "transaction_date",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 790,
+          "min": 20150101,
+          "max": 20170228,
+          "empty_strings": null
+        },
+        {
+          "name": "membership_expire_date",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 1241,
+          "min": 19700101,
+          "max": 20170331,
+          "empty_strings": null
+        },
+        {
+          "name": "is_cancel",
+          "type": "TINYINT",
+          "nulls": 0,
+          "distinct": 2,
+          "min": 0,
+          "max": 1,
+          "empty_strings": null
+        }
+      ],
+      "full_row_duplicates": 338,
+      "key_columns": [],
+      "key_duplicates": null,
+      "unique_msno": 236651,
+      "date_ranges": {
+        "transaction_date": [
+          20150101,
+          20170228
+        ],
+        "membership_expire_date": [
+          19700101,
+          20170331
+        ]
+      }
+    },
+    "transactions_v2": {
+      "table": "transactions_v2",
+      "rows": 143736,
+      "columns": [
+        {
+          "name": "msno",
+          "type": "VARCHAR",
+          "nulls": 0,
+          "distinct": 119885,
+          "min": null,
+          "max": null,
+          "empty_strings": 0
+        },
+        {
+          "name": "payment_method_id",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 35,
+          "min": 3,
+          "max": 41,
+          "empty_strings": null
+        },
+        {
+          "name": "payment_plan_days",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 28,
+          "min": 0,
+          "max": 450,
+          "empty_strings": null
+        },
+        {
+          "name": "plan_list_price",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 42,
+          "min": 0,
+          "max": 2000,
+          "empty_strings": null
+        },
+        {
+          "name": "actual_amount_paid",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 42,
+          "min": 0,
+          "max": 2000,
+          "empty_strings": null
+        },
+        {
+          "name": "is_auto_renew",
+          "type": "TINYINT",
+          "nulls": 0,
+          "distinct": 2,
+          "min": 0,
+          "max": 1,
+          "empty_strings": null
+        },
+        {
+          "name": "transaction_date",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 804,
+          "min": 20150101,
+          "max": 20170331,
+          "empty_strings": null
+        },
+        {
+          "name": "membership_expire_date",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 1202,
+          "min": 20170227,
+          "max": 20220513,
+          "empty_strings": null
+        },
+        {
+          "name": "is_cancel",
+          "type": "TINYINT",
+          "nulls": 0,
+          "distinct": 2,
+          "min": 0,
+          "max": 1,
+          "empty_strings": null
+        }
+      ],
+      "full_row_duplicates": 0,
+      "key_columns": [],
+      "key_duplicates": null,
+      "unique_msno": 119885,
+      "date_ranges": {
+        "transaction_date": [
+          20150101,
+          20170331
+        ],
+        "membership_expire_date": [
+          20170227,
+          20220513
+        ]
+      }
+    },
+    "user_logs_v2": {
+      "table": "user_logs_v2",
+      "rows": 1842348,
+      "columns": [
+        {
+          "name": "msno",
+          "type": "VARCHAR",
+          "nulls": 0,
+          "distinct": 110622,
+          "min": null,
+          "max": null,
+          "empty_strings": 0
+        },
+        {
+          "name": "date",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 31,
+          "min": 20170301,
+          "max": 20170331,
+          "empty_strings": null
+        },
+        {
+          "name": "num_25",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 414,
+          "min": 0,
+          "max": 1397,
+          "empty_strings": null
+        },
+        {
+          "name": "num_50",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 219,
+          "min": 0,
+          "max": 580,
+          "empty_strings": null
+        },
+        {
+          "name": "num_75",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 115,
+          "min": 0,
+          "max": 246,
+          "empty_strings": null
+        },
+        {
+          "name": "num_985",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 272,
+          "min": 0,
+          "max": 1561,
+          "empty_strings": null
+        },
+        {
+          "name": "num_100",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 664,
+          "min": 0,
+          "max": 21073,
+          "empty_strings": null
+        },
+        {
+          "name": "num_unq",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 495,
+          "min": 1,
+          "max": 1957,
+          "empty_strings": null
+        },
+        {
+          "name": "total_secs",
+          "type": "DOUBLE",
+          "nulls": 0,
+          "distinct": 1643836,
+          "min": 0.01,
+          "max": 5392522.68,
+          "empty_strings": null
+        }
+      ],
+      "full_row_duplicates": 0,
+      "key_columns": [
+        "msno",
+        "date"
+      ],
+      "key_duplicates": 0,
+      "unique_msno": 110622,
+      "date_ranges": {
+        "date": [
+          20170301,
+          20170331
+        ]
+      }
+    },
+    "user_logs": {
+      "table": "user_logs",
+      "rows": 8712799,
+      "columns": [
+        {
+          "name": "msno",
+          "type": "VARCHAR",
+          "nulls": 0,
+          "distinct": 186942,
+          "min": null,
+          "max": null,
+          "empty_strings": 0
+        },
+        {
+          "name": "date",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 151,
+          "min": 20161001,
+          "max": 20170228,
+          "empty_strings": null
+        },
+        {
+          "name": "num_25",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 601,
+          "min": 0,
+          "max": 13635,
+          "empty_strings": null
+        },
+        {
+          "name": "num_50",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 304,
+          "min": 0,
+          "max": 705,
+          "empty_strings": null
+        },
+        {
+          "name": "num_75",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 186,
+          "min": 0,
+          "max": 604,
+          "empty_strings": null
+        },
+        {
+          "name": "num_985",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 262,
+          "min": 0,
+          "max": 495,
+          "empty_strings": null
+        },
+        {
+          "name": "num_100",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 992,
+          "min": 0,
+          "max": 12633,
+          "empty_strings": null
+        },
+        {
+          "name": "num_unq",
+          "type": "INTEGER",
+          "nulls": 0,
+          "distinct": 690,
+          "min": 1,
+          "max": 3054,
+          "empty_strings": null
+        },
+        {
+          "name": "total_secs",
+          "type": "DOUBLE",
+          "nulls": 0,
+          "distinct": 6381954,
+          "min": 0.002,
+          "max": 2455335.195,
+          "empty_strings": null
+        }
+      ],
+      "full_row_duplicates": 0,
+      "key_columns": [
+        "msno",
+        "date"
+      ],
+      "key_duplicates": 0,
+      "unique_msno": 186942,
+      "date_ranges": {
+        "date": [
+          20161001,
+          20170228
+        ]
+      }
+    }
+  },
+  "checks": [
+    {
+      "table": "train",
+      "name": "label_not_binary",
+      "count": 0,
+      "denominator": 99340,
+      "severity": "flag",
+      "description": "is_churn is not 0/1"
+    },
+    {
+      "table": "train_v2",
+      "name": "label_not_binary",
+      "count": 0,
+      "denominator": 97237,
+      "severity": "flag",
+      "description": "is_churn is not 0/1"
+    },
+    {
+      "table": "members_v3",
+      "name": "bd_zero_or_negative",
+      "count": 453151,
+      "denominator": 677007,
+      "severity": "flag",
+      "description": "age (bd) is 0 or negative"
+    },
+    {
+      "table": "members_v3",
+      "name": "bd_below_min",
+      "count": 95,
+      "denominator": 677007,
+      "severity": "flag",
+      "description": "age between 1 and 9"
+    },
+    {
+      "table": "members_v3",
+      "name": "bd_above_max",
+      "count": 753,
+      "denominator": 677007,
+      "severity": "flag",
+      "description": "age above 90"
+    },
+    {
+      "table": "members_v3",
+      "name": "gender_missing",
+      "count": 442091,
+      "denominator": 677007,
+      "severity": "info",
+      "description": "gender missing"
+    },
+    {
+      "table": "members_v3",
+      "name": "registration_invalid_date",
+      "count": 0,
+      "denominator": 677007,
+      "severity": "flag",
+      "description": "registration_init_time is not a valid date"
+    },
+    {
+      "table": "members_v3",
+      "name": "registered_on_or_after_cutoff_A",
+      "count": 31703,
+      "denominator": 677007,
+      "severity": "info",
+      "description": "registered on/after snapshot A cutoff (20170201)"
+    },
+    {
+      "table": "members_v3",
+      "name": "registered_on_or_after_cutoff_B",
+      "count": 15428,
+      "denominator": 677007,
+      "severity": "info",
+      "description": "registered on/after snapshot B cutoff (20170301)"
+    },
+    {
+      "table": "transactions",
+      "name": "list_price_zero",
+      "count": 149953,
+      "denominator": 2156008,
+      "severity": "flag",
+      "description": "plan_list_price is 0"
+    },
+    {
+      "table": "transactions",
+      "name": "paid_zero",
+      "count": 119759,
+      "denominator": 2156008,
+      "severity": "info",
+      "description": "actual_amount_paid is 0"
+    },
+    {
+      "table": "transactions",
+      "name": "paid_zero_list_positive",
+      "count": 55448,
+      "denominator": 2156008,
+      "severity": "info",
+      "description": "paid 0 although list price > 0"
+    },
+    {
+      "table": "transactions",
+      "name": "paid_above_list",
+      "count": 85674,
+      "denominator": 2156008,
+      "severity": "flag",
+      "description": "paid more than list price"
+    },
+    {
+      "table": "transactions",
+      "name": "plan_days_zero",
+      "count": 86932,
+      "denominator": 2156008,
+      "severity": "flag",
+      "description": "payment_plan_days is 0"
+    },
+    {
+      "table": "transactions",
+      "name": "negative_values",
+      "count": 0,
+      "denominator": 2156008,
+      "severity": "flag",
+      "description": "any numeric field negative"
+    },
+    {
+      "table": "transactions",
+      "name": "expire_before_transaction",
+      "count": 15205,
+      "denominator": 2156008,
+      "severity": "flag",
+      "description": "membership expires before the transaction date"
+    },
+    {
+      "table": "transactions",
+      "name": "expire_implausible_date",
+      "count": 184,
+      "denominator": 2156008,
+      "severity": "flag",
+      "description": "membership_expire_date before 20040101 (e.g. 1970-01-01)"
+    },
+    {
+      "table": "transactions",
+      "name": "invalid_dates",
+      "count": 0,
+      "denominator": 2156008,
+      "severity": "flag",
+      "description": "unparseable date"
+    },
+    {
+      "table": "transactions",
+      "name": "is_cancel",
+      "count": 85339,
+      "denominator": 2156008,
+      "severity": "info",
+      "description": "cancellation transactions"
+    },
+    {
+      "table": "transactions",
+      "name": "transaction_on_or_after_cutoff_A",
+      "count": 90933,
+      "denominator": 2156008,
+      "severity": "info",
+      "description": "transaction on/after snapshot A cutoff (20170201); excluded from its features"
+    },
+    {
+      "table": "transactions",
+      "name": "transaction_on_or_after_cutoff_B",
+      "count": 0,
+      "denominator": 2156008,
+      "severity": "info",
+      "description": "transaction on/after snapshot B cutoff (20170301); excluded from its features"
+    },
+    {
+      "table": "transactions_v2",
+      "name": "list_price_zero",
+      "count": 1639,
+      "denominator": 143736,
+      "severity": "flag",
+      "description": "plan_list_price is 0"
+    },
+    {
+      "table": "transactions_v2",
+      "name": "paid_zero",
+      "count": 1890,
+      "denominator": 143736,
+      "severity": "info",
+      "description": "actual_amount_paid is 0"
+    },
+    {
+      "table": "transactions_v2",
+      "name": "paid_zero_list_positive",
+      "count": 492,
+      "denominator": 143736,
+      "severity": "info",
+      "description": "paid 0 although list price > 0"
+    },
+    {
+      "table": "transactions_v2",
+      "name": "paid_above_list",
+      "count": 241,
+      "denominator": 143736,
+      "severity": "flag",
+      "description": "paid more than list price"
+    },
+    {
+      "table": "transactions_v2",
+      "name": "plan_days_zero",
+      "count": 241,
+      "denominator": 143736,
+      "severity": "flag",
+      "description": "payment_plan_days is 0"
+    },
+    {
+      "table": "transactions_v2",
+      "name": "negative_values",
+      "count": 0,
+      "denominator": 143736,
+      "severity": "flag",
+      "description": "any numeric field negative"
+    },
+    {
+      "table": "transactions_v2",
+      "name": "expire_before_transaction",
+      "count": 519,
+      "denominator": 143736,
+      "severity": "flag",
+      "description": "membership expires before the transaction date"
+    },
+    {
+      "table": "transactions_v2",
+      "name": "expire_implausible_date",
+      "count": 0,
+      "denominator": 143736,
+      "severity": "flag",
+      "description": "membership_expire_date before 20040101 (e.g. 1970-01-01)"
+    },
+    {
+      "table": "transactions_v2",
+      "name": "invalid_dates",
+      "count": 0,
+      "denominator": 143736,
+      "severity": "flag",
+      "description": "unparseable date"
+    },
+    {
+      "table": "transactions_v2",
+      "name": "is_cancel",
+      "count": 3549,
+      "denominator": 143736,
+      "severity": "info",
+      "description": "cancellation transactions"
+    },
+    {
+      "table": "transactions_v2",
+      "name": "transaction_on_or_after_cutoff_A",
+      "count": 120029,
+      "denominator": 143736,
+      "severity": "info",
+      "description": "transaction on/after snapshot A cutoff (20170201); excluded from its features"
+    },
+    {
+      "table": "transactions_v2",
+      "name": "transaction_on_or_after_cutoff_B",
+      "count": 107099,
+      "denominator": 143736,
+      "severity": "info",
+      "description": "transaction on/after snapshot B cutoff (20170301); excluded from its features"
+    },
+    {
+      "table": "user_logs_v2",
+      "name": "total_secs_negative",
+      "count": 0,
+      "denominator": 1842348,
+      "severity": "flag",
+      "description": "total_secs negative"
+    },
+    {
+      "table": "user_logs_v2",
+      "name": "total_secs_above_day",
+      "count": 410,
+      "denominator": 1842348,
+      "severity": "flag",
+      "description": "total_secs above 86,400 (more than a day)"
+    },
+    {
+      "table": "user_logs_v2",
+      "name": "negative_counts",
+      "count": 0,
+      "denominator": 1842348,
+      "severity": "flag",
+      "description": "a play count is negative"
+    },
+    {
+      "table": "user_logs_v2",
+      "name": "unique_exceeds_plays",
+      "count": 0,
+      "denominator": 1842348,
+      "severity": "flag",
+      "description": "more unique songs than total plays"
+    },
+    {
+      "table": "user_logs_v2",
+      "name": "zero_activity",
+      "count": 0,
+      "denominator": 1842348,
+      "severity": "info",
+      "description": "row with no plays and no seconds"
+    },
+    {
+      "table": "user_logs_v2",
+      "name": "invalid_dates",
+      "count": 0,
+      "denominator": 1842348,
+      "severity": "flag",
+      "description": "unparseable date"
+    },
+    {
+      "table": "user_logs",
+      "name": "total_secs_negative",
+      "count": 0,
+      "denominator": 8712799,
+      "severity": "flag",
+      "description": "total_secs negative"
+    },
+    {
+      "table": "user_logs",
+      "name": "total_secs_above_day",
+      "count": 2219,
+      "denominator": 8712799,
+      "severity": "flag",
+      "description": "total_secs above 86,400 (more than a day)"
+    },
+    {
+      "table": "user_logs",
+      "name": "negative_counts",
+      "count": 0,
+      "denominator": 8712799,
+      "severity": "flag",
+      "description": "a play count is negative"
+    },
+    {
+      "table": "user_logs",
+      "name": "unique_exceeds_plays",
+      "count": 0,
+      "denominator": 8712799,
+      "severity": "flag",
+      "description": "more unique songs than total plays"
+    },
+    {
+      "table": "user_logs",
+      "name": "zero_activity",
+      "count": 0,
+      "denominator": 8712799,
+      "severity": "info",
+      "description": "row with no plays and no seconds"
+    },
+    {
+      "table": "user_logs",
+      "name": "invalid_dates",
+      "count": 0,
+      "denominator": 8712799,
+      "severity": "flag",
+      "description": "unparseable date"
+    },
+    {
+      "table": "transactions_v2",
+      "name": "identical_rows_in_v1",
+      "count": 0,
+      "denominator": 143736,
+      "severity": "flag",
+      "description": "distinct rows present identically in both transaction files (dedupe in Phase 1)"
+    },
+    {
+      "table": "transactions_v2",
+      "name": "same_msno_date_rows_differ",
+      "count": 743,
+      "denominator": 143736,
+      "severity": "flag",
+      "description": "(msno, transaction_date) pairs in both files where no row matches on expiry, amount, plan days and cancel flag: v2 can restate a transaction with later values"
+    },
+    {
+      "table": "transactions_v2",
+      "name": "rows_before_cutoff_B",
+      "count": 36637,
+      "denominator": 143736,
+      "severity": "info",
+      "description": "v2 rows dated before 20170301, i.e. inside the period v1 already covers"
+    },
+    {
+      "table": "user_logs_v2",
+      "name": "msno_date_in_v1",
+      "count": 0,
+      "denominator": 1842348,
+      "severity": "flag",
+      "description": "(msno, date) keys also present in user_logs"
+    },
+    {
+      "table": "train_v2",
+      "name": "users_also_in_train",
+      "count": 88138,
+      "denominator": 97237,
+      "severity": "info",
+      "description": "label users present in both label files"
+    },
+    {
+      "table": "train",
+      "name": "users_missing_from_members_v3",
+      "count": 11493,
+      "denominator": 99340,
+      "severity": "info",
+      "description": "label users with no row in members_v3"
+    },
+    {
+      "table": "train",
+      "name": "users_missing_from_transactions",
+      "count": 0,
+      "denominator": 99340,
+      "severity": "info",
+      "description": "label users with no row in transactions (v1)"
+    },
+    {
+      "table": "train",
+      "name": "users_missing_from_user_logs",
+      "count": 16967,
+      "denominator": 99340,
+      "severity": "info",
+      "description": "label users with no row in user_logs (v1)"
+    },
+    {
+      "table": "train_v2",
+      "name": "users_missing_from_members_v3",
+      "count": 10838,
+      "denominator": 97237,
+      "severity": "info",
+      "description": "label users with no row in members_v3"
+    },
+    {
+      "table": "train_v2",
+      "name": "users_missing_from_transactions",
+      "count": 243,
+      "denominator": 97237,
+      "severity": "info",
+      "description": "label users with no row in transactions (v1)"
+    },
+    {
+      "table": "train_v2",
+      "name": "users_missing_from_user_logs",
+      "count": 16377,
+      "denominator": 97237,
+      "severity": "info",
+      "description": "label users with no row in user_logs (v1)"
+    }
+  ],
+  "overlap": {
+    "train": {
+      "train": 99340,
+      "train_v2": 88138,
+      "members_v3": 87847,
+      "transactions": 99340,
+      "transactions_v2": 93741,
+      "user_logs_v2": 73934,
+      "user_logs": 82373
+    },
+    "train_v2": {
+      "train_v2": 97237,
+      "train": 88138,
+      "members_v3": 86399,
+      "transactions": 96994,
+      "transactions_v2": 93505,
+      "user_logs_v2": 75624,
+      "user_logs": 80860
+    },
+    "members_v3": {
+      "members_v3": 677007,
+      "train": 87847,
+      "train_v2": 86399,
+      "transactions": 193363,
+      "transactions_v2": 108060,
+      "user_logs_v2": 110620,
+      "user_logs": 186926
+    },
+    "transactions": {
+      "transactions": 236651,
+      "train": 99340,
+      "train_v2": 96994,
+      "members_v3": 193363,
+      "transactions_v2": 113583,
+      "user_logs_v2": 95169,
+      "user_logs": 124092
+    },
+    "transactions_v2": {
+      "transactions_v2": 119885,
+      "train": 93741,
+      "train_v2": 93505,
+      "members_v3": 108060,
+      "transactions": 113583,
+      "user_logs_v2": 96879,
+      "user_logs": 99307
+    },
+    "user_logs_v2": {
+      "user_logs_v2": 110622,
+      "train": 73934,
+      "train_v2": 75624,
+      "members_v3": 110620,
+      "transactions": 95169,
+      "transactions_v2": 96879,
+      "user_logs": 98837
+    },
+    "user_logs": {
+      "user_logs": 186942,
+      "train": 82373,
+      "train_v2": 80860,
+      "members_v3": 186926,
+      "transactions": 124092,
+      "transactions_v2": 99307,
+      "user_logs_v2": 98837
+    }
+  }
+}

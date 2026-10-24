@@ -1,0 +1,44 @@
+# Phase 5 feature settings. Every feature is built only from a snapshot's directory
+# (data strictly before its cutoff); the builder re-applies the cutoff as a second guard.
+
+# Listening level windows (days before the cutoff). The longest also bounds every
+# listening feature; Phase 2 checks the log window covers it for every snapshot.
+listening_windows_days: [7, 14, 30, 60, 90]
+
+# Recent-vs-earlier ratios: (per-day value in the last `recent` days) /
+# (per-day value in the `base` days before that). NULL when the base is 0.
+ratio_pairs:
+  - {recent: 7, base: 23}     # last week vs rest of the last 30 days
+  - {recent: 30, base: 60}    # last month vs the two months before
+
+# OLS slope of daily minutes (inactive days = 0) over these windows.
+slope_windows_days: [30, 90]
+
+# Listening quality windows (skip / completion / variety rates).
+quality_windows_days: [30, 90]
+
+# Transaction history lookbacks.
+transaction_lookback_days: 365
+promo_lookback_days: 180
+
+# Recency cap: no listen within the longest window -> cap + 1 (matches Phase 4).
+recency_cap_days: 90
+
+# Float features are rounded to this many decimals: parallel float aggregation differs
+# in the last bits between runs, and rounding keeps outputs byte-reproducible.
+float_decimals: 8
+
+# Demographic attributes. They are built (for the fairness audit in Phase 6) but kept
+# out of the model by default. Rationale in docs/decisions.md (#36).
+demographics:
+  features: [age, gender, city]
+  use_in_model: false
+
+# Leakage alarm: a single feature this predictive on its own (|AUC - 0.5| x 2, or
+# Cramér's V) is flagged in the report for review, since leaked label information
+# usually shows up as one implausibly strong feature.
+leakage_alarm_strength: 0.8
+
+outputs:
+  features_dir: data/processed/{mode}/features
+  tables_dir: reports/features

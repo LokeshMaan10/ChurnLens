@@ -1,0 +1,53 @@
+# Phase 3: EDA and behavioural analytics. Descriptive only: every result is an
+# association in observational data, never a causal effect.
+
+# EDA runs on snapshot A only, so snapshot B stays untouched as the test set.
+snapshot: A
+alpha: 0.05                 # for confidence intervals and tests
+
+# Segment tables: categories smaller than this fold into "Other"; at most
+# `max_categories` largest categories are shown per dimension.
+min_group_size: 200
+max_categories: 8
+
+# Band edges (left-closed, right-open). NULL ages go to "unknown".
+age_band_edges: [10, 20, 25, 30, 35, 40, 50, 91]
+tenure_band_edges_years: [0, 0.5, 1, 2, 3, 5, 8, 100]
+
+# Listening trajectories: days before the cutoff; display smoothing only.
+trajectory_days: 90
+trajectory_smoothing_days: 7
+# Recent-vs-earlier comparison used in the summary table.
+recent_days: 30
+
+# "Discount history" lookback for the promotion analysis.
+promo_lookback_days: 180
+
+# Calendar check: all-user activity in the last `recent` days before each cutoff
+# vs the `baseline` days before that (detects holiday dips in short windows).
+calendar_check:
+  recent_days: 7
+  baseline_days: 21
+  # Known events near the cutoffs, for annotation only (public calendar, not data).
+  events:
+    - {name: Lunar New Year holiday (Taiwan), start: 2017-01-27, end: 2017-02-01}
+
+cohorts:
+  first_month: 2015-01      # transactions start 2015-01-01
+  last_month: 2016-06
+  max_age_months: 12
+  top_channels: 4
+
+survival:
+  gap_days: 30              # KKBox rule: no renewal within 30 days of expiry = churn
+  # Spells first seen before this date may continue an unseen earlier spell
+  # (transactions start 2015-01-01), so they are excluded (left truncation).
+  min_first_spell_start: 2015-03-01
+  plot_max_days: 730
+  report_days: [90, 180, 365]
+
+figures:
+  dir: reports/figures
+  dpi: 150
+outputs:
+  tables_dir: reports/eda

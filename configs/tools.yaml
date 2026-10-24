@@ -1,0 +1,62 @@
+# Phase 11: tool layer shared by the MCP server, the agents and the app.
+
+sql:
+  max_rows: 200            # rows returned to the caller (the query may match more)
+  timeout_seconds: 20      # queries running longer are interrupted
+  # Only these statement types run. Everything else (INSERT, UPDATE, DELETE, CREATE,
+  # DROP, COPY, ATTACH, SET, PRAGMA, ...) is rejected before execution.
+  allowed_statement_types: [SELECT]
+  # Table functions that read arbitrary files are blocked so queries stay inside the
+  # curated views below.
+  blocked_functions: [read_csv, read_csv_auto, read_parquet, read_json, read_json_auto,
+                      read_text, read_blob, glob, parquet_scan, sniff_csv, query_table,
+                      httpfs, install, load]
+
+# Curated read-only views (name -> source), built over the pipeline outputs.
+# {mode} is filled from configs/data.yaml.
+views:
+  customers:
+    source: data/processed/{mode}/prioritize/B_actions.parquet
+    description: >-
+      Snapshot B scored customers (one row each): msno, p_churn (calibrated), cltv, evar
+      (p_churn x cltv), risk_band, value_band, quadrant, driver_cluster/feature/group/reason
+      (#1 risk-raising driver), rule, action, action_cost, expected_benefit, selected,
+      priority_rank (0 = not selected).
+  drivers:
+    source: data/processed/{mode}/explain/B_drivers.parquet
+    description: "Top risk-raising drivers per snapshot B customer: msno, rank (1-5), cluster, feature, group, value, contribution (log-odds), reason."
+  cltv:
+    source: data/processed/{mode}/value/B.parquet
+    description: "Snapshot B CLTV detail: msno, monthly_price, margin_month, formula_segment, renewal_rate_formula, survival_1m, cltv_formula, cltv_survival."
+  features_a:
+    source: data/processed/{mode}/features/A.parquet
+    description: "Snapshot A model features (one row per label user; see docs/data_dictionary.md)."
+  features_b:
+    source: data/processed/{mode}/features/B.parquet
+    description: "Snapshot B model features (same columns as features_a)."
+  labels_a:
+    source: data/processed/{mode}/snapshots/A/labels.parquet
+    description: "Snapshot A labels: msno, is_churn (Feb 2017 expirations)."
+  labels_b:
+    source: data/processed/{mode}/snapshots/B/labels.parquet
+    description: "Snapshot B labels: msno, is_churn (Mar 2017 expirations)."
+  rfm_a:
+    source: data/processed/{mode}/rfm/A.parquet
+    description: "Snapshot A RFM: recency_days, frequency_days, monetary, r/f/m_score, segment, cluster."
+  rfm_b:
+    source: data/processed/{mode}/rfm/B.parquet
+    description: "Snapshot B RFM (scored with A's cut-points)."
+  members:
+    source: data/interim/{mode}/clean/members.parquet
+    description: "Clean member profiles: msno, city, bd_raw, age, gender, registered_via, registration_date, age_invalid."
+  transactions:
+    source: data/interim/{mode}/clean/transactions.parquet
+    description: "Clean transactions (v1 history + v2 March): msno, payment_method_id, payment_plan_days, plan_list_price, actual_amount_paid, is_auto_renew, transaction_date, membership_expire_date, is_cancel, source, restated, expire_implausible."
+  predictions_a_oof:
+    source: data/processed/{mode}/predictions/A_oof.parquet
+    description: "Snapshot A out-of-fold predictions: msno, is_churn, p_raw, p_churn."
+
+charts:
+  dir: reports/agent_charts
+  dpi: 120
+  max_points: 50

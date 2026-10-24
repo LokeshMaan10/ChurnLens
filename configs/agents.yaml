@@ -1,0 +1,27 @@
+# Phase 12: agents.
+#
+# mode:
+#   auto     use Claude when an API credential AND the model env var are set, else offline
+#   offline  deterministic intent parsing + templates over the same tools (free, no API)
+#   llm      always use Claude (fails if no credential / model is configured)
+# The model name is read from the environment variable below; it is never hardcoded.
+mode: auto
+model_env_var: CHURNLENS_MODEL
+llm:
+  max_tokens: 16000
+  max_tool_turns: 8
+  effort: medium
+
+# Campaign planner defaults.
+planner:
+  holdout_share: 0.20             # randomized, uncontacted control group
+  assumed_relative_reduction: 0.15  # effect size the A/B test is powered for (assumption)
+  alpha: 0.05
+  power: 0.80
+  top_n: 20
+
+analyst:
+  default_top_n: 10
+
+traces:
+  path: reports/agent_traces/traces.jsonl

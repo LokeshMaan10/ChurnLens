@@ -1,0 +1,48 @@
+# Phase 14: drift monitoring and retraining policy.
+# Reference = snapshot A (training data); current = snapshot B (the next month's users).
+
+reference_snapshot: A
+current_snapshot: B
+
+psi:
+  bins: 10                 # quantile bins fitted on the reference
+  epsilon: 0.0001          # floor for empty bins (avoids log(0))
+  # Conventional PSI bands: < 0.10 stable, 0.10-0.25 moderate shift, > 0.25 major shift.
+  moderate: 0.10
+  major: 0.25
+
+# Features whose NULL share changes by more than this (absolute) are flagged as possible
+# data issues (pipeline or source change), separate from distribution shift.
+missing_share_change: 0.05
+
+# "Clock" features: time-since values that grow with the calendar. If such a feature's
+# median moves by about the gap between the two snapshots' cutoffs, the drift is structural
+# (the calendar moved), not a behaviour change.
+clock_features:
+  name_pattern: "^(days_since_|tenure_days)"
+  tolerance_days: 7
+
+# Retraining trigger policy: retrain if ANY condition holds.
+retrain_policy:
+  prediction_psi_above: 0.25           # score distribution moved a lot
+  share_of_model_features_major: 0.20  # >20% of model features with PSI > major
+  calibration_gap_above: 0.02          # |mean predicted - observed churn| once labels arrive
+  pr_auc_drop_above: 0.05              # relative to the training out-of-fold PR-AUC
+
+evidently:
+  enabled: true
+  sample: 20000            # rows per side for the HTML report (keeps it light)
+  seed: 42
+
+# Calendar events used by the monitoring agent to separate seasonal effects
+# (public calendar, not data).
+calendar_events:
+  - {name: Lunar New Year holiday (Taiwan), start: 2017-01-27, end: 2017-02-01}
+
+outputs:
+  summary_json: reports/monitoring/drift_summary.json
+  tables_dir: reports/monitoring
+  evidently_html: reports/monitoring/evidently_drift_A_vs_B.html
+  incident_note: reports/monitoring/incident_note.md
+  figures_dir: reports/figures
+  dpi: 150

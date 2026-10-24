@@ -1,0 +1,42 @@
+# Phase 10: experiment design and analysis tooling.
+# The A/B demo and the uplift demo use SIMULATED outcomes with FAKE treatment effects.
+# They show how the tooling works; they say nothing about real retention effects.
+
+alpha: 0.05
+power: 0.80
+srm_alpha: 0.001          # sample-ratio mismatch alarm threshold
+
+# Power table scenarios: control churn rates x relative reductions to detect.
+power_scenarios:
+  baseline_rates: [0.05, 0.10, 0.30, 0.50]
+  relative_mdes: [0.05, 0.10, 0.20]
+  treatment_share: 0.5
+
+simulation:
+  seed: 42
+  snapshot: B
+  population: high risk          # users in Phase 9's high risk band
+  treatment_share: 0.8           # 80% treated, 20% randomized holdout (control)
+  # FAKE effects: relative churn reduction for treated users, larger for users not on
+  # auto-renew so the uplift model has something to find.
+  fake_effect:
+    base_relative_reduction: 0.10
+    manual_renew_relative_reduction: 0.30
+  # Inject a sample-ratio mismatch in a second, broken run to show the SRM alarm.
+  # (A 5% loss of the ~1,565-user holdout gave p = 0.075: too small to detect at this n.)
+  srm_demo_drop_share: 0.15      # drop this share of control users
+
+uplift:
+  test_share: 0.5
+  deciles: 10
+  # Heavily regularised: the control arm has only ~780 training users, and a first try
+  # with 200 trees / 31 leaves predicted uplifts of -35 to +68 pp (true: 11-14 pp).
+  n_estimators: 100
+  learning_rate: 0.05
+  num_leaves: 7
+  min_child_samples: 100
+
+outputs:
+  tables_dir: reports/experiments
+  figures_dir: reports/figures
+  dpi: 150

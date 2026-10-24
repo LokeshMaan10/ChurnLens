@@ -1,0 +1,77 @@
+feature,group,kind,use_in_model,coverage,auc,cramers_v,median_retained,median_churned,strength
+minutes_7d,listening level,numeric,True,1,0.4746188545,,156.3787667,116.8483167,0.050762291
+active_days_7d,listening level,numeric,True,1,0.4754860776,,3,2,0.04902784481
+plays_7d,listening level,numeric,True,1,0.477261838,,52,40,0.04547632396
+unique_songs_7d,listening level,numeric,True,1,0.4779004692,,40,31,0.0441990617
+minutes_14d,listening level,numeric,True,1,0.4751696394,,378.34855,295.6624917,0.04966072128
+active_days_14d,listening level,numeric,True,1,0.4709336212,,6,5,0.05813275768
+plays_14d,listening level,numeric,True,1,0.4781467591,,123,100.5,0.0437064817
+unique_songs_14d,listening level,numeric,True,1,0.4786357092,,92,78,0.04272858163
+minutes_30d,listening level,numeric,True,1,0.4798716429,,867.2850083,697.0026167,0.04025671423
+active_days_30d,listening level,numeric,True,1,0.4667193877,,13,11,0.06656122451
+plays_30d,listening level,numeric,True,1,0.4818966861,,282,237.5,0.0362066278
+unique_songs_30d,listening level,numeric,True,1,0.4823921822,,211,179,0.03521563561
+minutes_60d,listening level,numeric,True,1,0.4752008433,,1765.543658,1398.095008,0.04959831335
+active_days_60d,listening level,numeric,True,1,0.4586628409,,26,20,0.08267431815
+plays_60d,listening level,numeric,True,1,0.4764266204,,574,461,0.04714675921
+unique_songs_60d,listening level,numeric,True,1,0.4764396864,,429,348.5,0.04712062724
+minutes_90d,listening level,numeric,True,1,0.473960125,,2624.4248,2049.183642,0.05207974994
+active_days_90d,listening level,numeric,True,1,0.4567046464,,38,28,0.08659070726
+plays_90d,listening level,numeric,True,1,0.4749461177,,853,679.5,0.05010776459
+unique_songs_90d,listening level,numeric,True,1,0.4748359363,,640,509.5,0.05032812742
+minutes_ratio_7_23,listening trend,numeric,True,0.7603281659,0.4759014905,,0.8013861,0.72307702,0.04819701891
+active_days_ratio_7_23,listening trend,numeric,True,0.7603281659,0.4939196947,,0.96638655,0.93877551,0.01216061064
+minutes_ratio_30_60,listening trend,numeric,True,0.7731326757,0.4831013973,,0.964295185,0.91690668,0.03379720534
+active_days_ratio_30_60,listening trend,numeric,True,0.7731326757,0.4907077669,,1,0.98245614,0.01858446618
+minutes_slope_30d,listening trend,numeric,True,1,0.50689235,,0,0,0.01378470009
+minutes_slope_90d,listening trend,numeric,True,1,0.5114101816,,0,0,0.02282036315
+minutes_cv_90d,engagement consistency,numeric,True,0.8127743104,0.5576668479,,1.52621195,1.78296808,0.1153336959
+longest_inactive_gap_90d,engagement consistency,numeric,True,1,0.57323973,,11,22,0.1464794599
+days_since_last_listen,engagement consistency,numeric,True,1,0.5189009206,,2,3,0.03780184113
+minutes_per_active_day_30d,listening level,numeric,True,0.7793336018,0.500119685,,83.5770552,83.80301515,0.000239369912
+capped_days_90d,data quality,numeric,True,1,0.4993968989,,0,0,0.001206202113
+skip_rate_30d,listening quality,numeric,True,0.7793336018,0.5183051548,,0.15340909,0.16374269,0.03661030968
+completion_rate_30d,listening quality,numeric,True,0.7793336018,0.4760856802,,0.737742485,0.71794872,0.04782863961
+unique_song_share_30d,listening quality,numeric,True,0.7793336018,0.5034314609,,0.81474243,0.81515499,0.006862921895
+skip_rate_90d,listening quality,numeric,True,0.8127743104,0.5114211682,,0.162726865,0.16962525,0.02284233648
+completion_rate_90d,listening quality,numeric,True,0.8127743104,0.4822405489,,0.72589733,0.71223217,0.03551890217
+unique_song_share_90d,listening quality,numeric,True,0.8127743104,0.5009213257,,0.80537071,0.80568336,0.001842651426
+skip_rate_change_30_60,listening quality,numeric,True,0.739691967,0.5029279763,,-0.006519455,-0.00556674,0.005855952681
+completion_rate_change_30_60,listening quality,numeric,True,0.739691967,0.4999670676,,0.008755415,0.01076317,6.586483274e-05
+last_plan_days,plan,numeric,True,0.9979464465,0.5557054846,,30,30,0.1114109692
+last_list_price,plan,numeric,True,0.9979464465,0.6729786496,,149,149,0.3459572993
+last_amount_paid,plan,numeric,True,0.9979464465,0.66336554,,149,149,0.32673108
+last_discount_amount,plan,numeric,True,0.9979464465,0.5064615645,,0,0,0.01292312895
+last_price_per_day,plan,numeric,True,0.9979464465,0.579793876,,4.96666667,4.96666667,0.159587752
+last_is_discounted,plan,binary,True,0.9979464465,0.4996859801,,0,0,0.0006280397204
+last_is_free,plan,binary,True,0.9979464465,0.5286653888,,0,0,0.05733077754
+last_list_price_zero,plan,binary,True,0.9979464465,0.5218953557,,0,0,0.04379071141
+last_is_auto_renew,plan,binary,True,0.9979464465,0.2558467105,,1,0,0.4883065789
+last_payment_method,plan,categorical,True,0.9979464465,,0.3846573196,,,0.3846573196
+last_txn_is_cancel,cancellation,binary,True,0.9979464465,0.5708977766,,0,0,0.1417955533
+days_to_expiry,plan,numeric,True,0.9979464465,0.4674718903,,17,15,0.06505621935
+days_to_latest_txn_expiry,plan,numeric,True,0.9979363801,0.4094794089,,16,13,0.1810411821
+n_transactions_365d,history,numeric,True,1,0.2796741339,,12,6,0.4406517323
+total_paid_365d,history,numeric,True,1,0.3375062871,,1188,894,0.3249874259
+share_auto_renew_365d,history,numeric,True,0.9892993759,0.2633686479,,1,0.125,0.4732627042
+n_plan_changes_365d,history,numeric,True,1,0.5471476231,,0,0,0.09429524616
+n_payment_method_changes_365d,history,numeric,True,1,0.5522868631,,0,0,0.1045737261
+n_promo_txns_180d,history,numeric,True,1,0.5378378836,,0,0,0.07567576725
+n_cancels_all,cancellation,numeric,True,1,0.5280073244,,0,0,0.05601464871
+n_cancels_365d,cancellation,numeric,True,1,0.5459930157,,0,0,0.09198603145
+days_since_last_cancel,cancellation,numeric,True,0.1999094021,0.2791098276,,333,74,0.4417803448
+days_since_last_transaction,history,numeric,True,0.9979464465,0.6290870844,,15,20,0.2581741688
+days_since_first_transaction,history,numeric,True,0.9979464465,0.4293866242,,516,403,0.1412267516
+no_transaction_history,history,binary,True,1,0.5046796945,,0,0,0.009359389021
+tenure_days,tenure,numeric,True,0.8833903765,0.4756634718,,1012,862,0.0486730565
+registered_via,tenure,categorical,True,0.8833903765,,0.1741802477,,,0.1741802477
+member_info_missing,tenure,binary,True,1,0.4916106241,,0,0,0.0167787518
+age,demographics,numeric,False,0.3915341252,0.3966011932,,28,26,0.2067976136
+gender,demographics,categorical,False,0.8833903765,,0.07684181223,,,0.07684181223
+city,demographics,categorical,False,0.8833903765,,0.07185185987,,,0.07185185987
+r_score,RFM,numeric,True,1,0.4817285181,,3,3,0.03654296378
+f_score,RFM,numeric,True,1,0.4582595273,,3,3,0.08348094534
+m_score,RFM,numeric,True,1,0.323878083,,3,2,0.352243834
+personal_recency,RFM,numeric,True,0.7622206563,0.5434122601,,1,1,0.08682452012
+rfm_segment,RFM,categorical,True,1,,0.06607504663,,,0.06607504663
+rfm_group,RFM,categorical,True,1,,0.3078519319,,,0.3078519319

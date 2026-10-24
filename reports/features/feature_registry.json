@@ -1,0 +1,762 @@
+[
+  {
+    "name": "minutes_7d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Total minutes listened in the 7 days before the cutoff.",
+    "rationale": "Overall engagement; lower listening is associated with churn.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "active_days_7d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Days with any listening in the last 7 days.",
+    "rationale": "Habit strength, less sensitive to binge days than minutes.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "plays_7d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Songs played (any completion level) in the last 7 days.",
+    "rationale": "Engagement measured in plays rather than time.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "unique_songs_7d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Sum of daily unique songs in the last 7 days.",
+    "rationale": "Breadth of listening; narrow listening may signal lower attachment.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "minutes_14d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Total minutes listened in the 14 days before the cutoff.",
+    "rationale": "Overall engagement; lower listening is associated with churn.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "active_days_14d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Days with any listening in the last 14 days.",
+    "rationale": "Habit strength, less sensitive to binge days than minutes.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "plays_14d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Songs played (any completion level) in the last 14 days.",
+    "rationale": "Engagement measured in plays rather than time.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "unique_songs_14d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Sum of daily unique songs in the last 14 days.",
+    "rationale": "Breadth of listening; narrow listening may signal lower attachment.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "minutes_30d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Total minutes listened in the 30 days before the cutoff.",
+    "rationale": "Overall engagement; lower listening is associated with churn.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "active_days_30d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Days with any listening in the last 30 days.",
+    "rationale": "Habit strength, less sensitive to binge days than minutes.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "plays_30d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Songs played (any completion level) in the last 30 days.",
+    "rationale": "Engagement measured in plays rather than time.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "unique_songs_30d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Sum of daily unique songs in the last 30 days.",
+    "rationale": "Breadth of listening; narrow listening may signal lower attachment.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "minutes_60d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Total minutes listened in the 60 days before the cutoff.",
+    "rationale": "Overall engagement; lower listening is associated with churn.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "active_days_60d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Days with any listening in the last 60 days.",
+    "rationale": "Habit strength, less sensitive to binge days than minutes.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "plays_60d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Songs played (any completion level) in the last 60 days.",
+    "rationale": "Engagement measured in plays rather than time.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "unique_songs_60d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Sum of daily unique songs in the last 60 days.",
+    "rationale": "Breadth of listening; narrow listening may signal lower attachment.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "minutes_90d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Total minutes listened in the 90 days before the cutoff.",
+    "rationale": "Overall engagement; lower listening is associated with churn.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "active_days_90d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Days with any listening in the last 90 days.",
+    "rationale": "Habit strength, less sensitive to binge days than minutes.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "plays_90d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Songs played (any completion level) in the last 90 days.",
+    "rationale": "Engagement measured in plays rather than time.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "unique_songs_90d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Sum of daily unique songs in the last 90 days.",
+    "rationale": "Breadth of listening; narrow listening may signal lower attachment.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "minutes_ratio_7_23",
+    "group": "listening trend",
+    "kind": "numeric",
+    "definition": "Minutes per day in the last 7 days / minutes per day in the 23 days before that. NULL if the earlier period has no listening.",
+    "rationale": "A drop relative to the user's own recent level (e.g. 0.38 = down 62%).",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "active_days_ratio_7_23",
+    "group": "listening trend",
+    "kind": "numeric",
+    "definition": "Active-day rate in the last 7 days / rate in the 23 days before.",
+    "rationale": "Change in habit frequency relative to the user's own baseline.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "minutes_ratio_30_60",
+    "group": "listening trend",
+    "kind": "numeric",
+    "definition": "Minutes per day in the last 30 days / minutes per day in the 60 days before that. NULL if the earlier period has no listening.",
+    "rationale": "A drop relative to the user's own recent level (e.g. 0.38 = down 62%).",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "active_days_ratio_30_60",
+    "group": "listening trend",
+    "kind": "numeric",
+    "definition": "Active-day rate in the last 30 days / rate in the 60 days before.",
+    "rationale": "Change in habit frequency relative to the user's own baseline.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "minutes_slope_30d",
+    "group": "listening trend",
+    "kind": "numeric",
+    "definition": "OLS slope of daily minutes (inactive days = 0) over the last 30 days, in minutes/day per day; positive = rising.",
+    "rationale": "Direction of the listening trajectory, using every day rather than two periods.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "minutes_slope_90d",
+    "group": "listening trend",
+    "kind": "numeric",
+    "definition": "OLS slope of daily minutes (inactive days = 0) over the last 90 days, in minutes/day per day; positive = rising.",
+    "rationale": "Direction of the listening trajectory, using every day rather than two periods.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "minutes_cv_90d",
+    "group": "engagement consistency",
+    "kind": "numeric",
+    "definition": "Coefficient of variation of daily minutes over 90 days (inactive days = 0). NULL if no listening.",
+    "rationale": "Erratic listening may indicate a weaker routine.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "longest_inactive_gap_90d",
+    "group": "engagement consistency",
+    "kind": "numeric",
+    "definition": "Longest run of consecutive days without listening in the last 90 days (including a run that reaches the cutoff).",
+    "rationale": "Long breaks are associated with lapsing.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "days_since_last_listen",
+    "group": "engagement consistency",
+    "kind": "numeric",
+    "definition": "Days from the last listening day to the cutoff; 91 if none in 90 days.",
+    "rationale": "Recency of engagement (the R in RFM, unbinned).",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "minutes_per_active_day_30d",
+    "group": "listening level",
+    "kind": "numeric",
+    "definition": "Minutes in the last 30 days / active days in the last 30 days.",
+    "rationale": "Session depth on days the user does listen.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "capped_days_90d",
+    "group": "data quality",
+    "kind": "numeric",
+    "definition": "Days in the last 90 whose total_secs was capped at one day (Phase 1 rule L1).",
+    "rationale": "Flags implausible logging that may distort minutes.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "skip_rate_30d",
+    "group": "listening quality",
+    "kind": "numeric",
+    "definition": "Share of plays stopped before 25% of the song, last 30 days. NULL if no plays.",
+    "rationale": "Frequent skipping can indicate poor content fit.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "completion_rate_30d",
+    "group": "listening quality",
+    "kind": "numeric",
+    "definition": "Share of plays over 98.5% complete, last 30 days. NULL if no plays.",
+    "rationale": "Full listens suggest content satisfaction.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "unique_song_share_30d",
+    "group": "listening quality",
+    "kind": "numeric",
+    "definition": "Daily unique songs / plays, last 30 days. NULL if no plays.",
+    "rationale": "Exploration vs repeat listening.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "skip_rate_90d",
+    "group": "listening quality",
+    "kind": "numeric",
+    "definition": "Share of plays stopped before 25% of the song, last 90 days. NULL if no plays.",
+    "rationale": "Frequent skipping can indicate poor content fit.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "completion_rate_90d",
+    "group": "listening quality",
+    "kind": "numeric",
+    "definition": "Share of plays over 98.5% complete, last 90 days. NULL if no plays.",
+    "rationale": "Full listens suggest content satisfaction.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "unique_song_share_90d",
+    "group": "listening quality",
+    "kind": "numeric",
+    "definition": "Daily unique songs / plays, last 90 days. NULL if no plays.",
+    "rationale": "Exploration vs repeat listening.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "skip_rate_change_30_60",
+    "group": "listening quality",
+    "kind": "numeric",
+    "definition": "Skip rate in the last 30 days minus skip rate in days 31-90.",
+    "rationale": "Rising skipping relative to the user's own baseline.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "completion_rate_change_30_60",
+    "group": "listening quality",
+    "kind": "numeric",
+    "definition": "Completion rate in the last 30 days minus completion rate in days 31-90.",
+    "rationale": "Falling satisfaction relative to the user's own baseline.",
+    "leakage_risk": "low",
+    "leakage_note": "Daily logs dated strictly before the cutoff; the scoring-only March logs are never read.",
+    "use_in_model": true
+  },
+  {
+    "name": "last_plan_days",
+    "group": "plan",
+    "kind": "numeric",
+    "definition": "payment_plan_days of the latest non-cancel transaction before the cutoff.",
+    "rationale": "Plan length; short trial-like plans churn far more (Phase 3).",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "last_list_price",
+    "group": "plan",
+    "kind": "numeric",
+    "definition": "plan_list_price (NTD) of the latest non-cancel transaction before the cutoff.",
+    "rationale": "Price tier of the current plan.",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "last_amount_paid",
+    "group": "plan",
+    "kind": "numeric",
+    "definition": "actual_amount_paid (NTD) of the latest non-cancel transaction before the cutoff.",
+    "rationale": "What the user actually pays.",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "last_discount_amount",
+    "group": "plan",
+    "kind": "numeric",
+    "definition": "plan_list_price - actual_amount_paid of the latest non-cancel transaction before the cutoff.",
+    "rationale": "Size of any discount on the current plan.",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "last_price_per_day",
+    "group": "plan",
+    "kind": "numeric",
+    "definition": "actual_amount_paid / payment_plan_days of the latest non-cancel transaction before the cutoff.",
+    "rationale": "Normalises price across plan lengths.",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "last_is_discounted",
+    "group": "plan",
+    "kind": "binary",
+    "definition": "1 if 0 < paid < list price on the latest non-cancel transaction before the cutoff.",
+    "rationale": "Promotional pricing flag.",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "last_is_free",
+    "group": "plan",
+    "kind": "binary",
+    "definition": "1 if amount paid is 0 on the latest non-cancel transaction before the cutoff.",
+    "rationale": "Free periods are associated with much higher churn (Phase 3).",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "last_list_price_zero",
+    "group": "plan",
+    "kind": "binary",
+    "definition": "1 if list price is 0 on the latest non-cancel transaction before the cutoff.",
+    "rationale": "Zero-price plans (trials, bundles).",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "last_is_auto_renew",
+    "group": "plan",
+    "kind": "binary",
+    "definition": "is_auto_renew of the latest non-cancel transaction before the cutoff.",
+    "rationale": "Strongest single association with churn in Phase 3 (V 0.38).",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "last_payment_method",
+    "group": "plan",
+    "kind": "categorical",
+    "definition": "payment_method_id of the latest non-cancel transaction before the cutoff, as a category.",
+    "rationale": "Payment channel; strongly associated with churn in Phase 3 (V 0.38).",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "last_txn_is_cancel",
+    "group": "cancellation",
+    "kind": "binary",
+    "definition": "1 if the most recent pre-cutoff transaction of any kind is a cancellation.",
+    "rationale": "An active cancellation before the cutoff.",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "days_to_expiry",
+    "group": "plan",
+    "kind": "numeric",
+    "definition": "Latest membership_expire_date over non-cancel pre-cutoff transactions, minus the cutoff (days).",
+    "rationale": "How soon the membership runs out.",
+    "leakage_risk": "medium",
+    "leakage_note": "Expiry dates are written on pre-cutoff transactions, but an export can restate them later. Mitigated by the v1_then_v2 source policy (Phase 1, decision #12).",
+    "use_in_model": true
+  },
+  {
+    "name": "days_to_latest_txn_expiry",
+    "group": "plan",
+    "kind": "numeric",
+    "definition": "Expiry on the most recent pre-cutoff transaction (cancellations included), minus the cutoff.",
+    "rationale": "Captures expiries moved earlier by a cancellation.",
+    "leakage_risk": "medium",
+    "leakage_note": "Expiry dates are written on pre-cutoff transactions, but an export can restate them later. Mitigated by the v1_then_v2 source policy (Phase 1, decision #12).",
+    "use_in_model": true
+  },
+  {
+    "name": "n_transactions_365d",
+    "group": "history",
+    "kind": "numeric",
+    "definition": "Non-cancel transactions in the last 365 days.",
+    "rationale": "Payment activity.",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "total_paid_365d",
+    "group": "history",
+    "kind": "numeric",
+    "definition": "NTD paid (non-cancel) in the last 365 days.",
+    "rationale": "Customer value to date.",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "share_auto_renew_365d",
+    "group": "history",
+    "kind": "numeric",
+    "definition": "Share of non-cancel transactions in the last 365 days with auto-renew.",
+    "rationale": "Stability of the renewal habit.",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "n_plan_changes_365d",
+    "group": "history",
+    "kind": "numeric",
+    "definition": "Consecutive non-cancel transactions in the last 365 days whose plan length or list price differs from the previous one.",
+    "rationale": "Plan switching (up/downgrades).",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "n_payment_method_changes_365d",
+    "group": "history",
+    "kind": "numeric",
+    "definition": "Consecutive non-cancel transactions in the last 365 days with a different payment method from the previous one.",
+    "rationale": "Payment instability.",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "n_promo_txns_180d",
+    "group": "history",
+    "kind": "numeric",
+    "definition": "Non-cancel transactions in the last 180 days with list price 0 or paid below list.",
+    "rationale": "Reliance on promotions.",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "n_cancels_all",
+    "group": "cancellation",
+    "kind": "numeric",
+    "definition": "Cancellation transactions before the cutoff (history from 2015-01-01).",
+    "rationale": "Past cancellations.",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "n_cancels_365d",
+    "group": "cancellation",
+    "kind": "numeric",
+    "definition": "Cancellation transactions in the last 365 days.",
+    "rationale": "Recent cancellations.",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "days_since_last_cancel",
+    "group": "cancellation",
+    "kind": "numeric",
+    "definition": "Days since the latest pre-cutoff cancellation; NULL if none.",
+    "rationale": "Recency of cancelling.",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "days_since_last_transaction",
+    "group": "history",
+    "kind": "numeric",
+    "definition": "Days since the latest pre-cutoff transaction of any kind.",
+    "rationale": "Payment recency.",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "days_since_first_transaction",
+    "group": "history",
+    "kind": "numeric",
+    "definition": "Days since the earliest pre-cutoff transaction (left-censored: history starts 2015-01-01).",
+    "rationale": "Length of observed paying history.",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "no_transaction_history",
+    "group": "history",
+    "kind": "binary",
+    "definition": "1 if the user has no pre-cutoff transaction at all.",
+    "rationale": "Missing history is itself informative (Phase 3: 33.8% churn).",
+    "leakage_risk": "low",
+    "leakage_note": "Uses only events dated strictly before the cutoff.",
+    "use_in_model": true
+  },
+  {
+    "name": "tenure_days",
+    "group": "tenure",
+    "kind": "numeric",
+    "definition": "Days from registration to the cutoff; NULL if unknown.",
+    "rationale": "Longer-tenured users may be more committed.",
+    "leakage_risk": "medium",
+    "leakage_note": "members_v3 is one undated extract: attributes may have changed after the cutoff. Users who registered on/after the cutoff are treated exactly like users with no members row, so post-cutoff registration is not revealed.",
+    "use_in_model": true
+  },
+  {
+    "name": "registered_via",
+    "group": "tenure",
+    "kind": "categorical",
+    "definition": "Registration channel code.",
+    "rationale": "Acquisition channel; associated with churn in Phase 3 (V 0.17).",
+    "leakage_risk": "medium",
+    "leakage_note": "members_v3 is one undated extract: attributes may have changed after the cutoff. Users who registered on/after the cutoff are treated exactly like users with no members row, so post-cutoff registration is not revealed.",
+    "use_in_model": true
+  },
+  {
+    "name": "member_info_missing",
+    "group": "tenure",
+    "kind": "binary",
+    "definition": "1 if no usable members row (none, or registered on/after the cutoff).",
+    "rationale": "Missing profile information.",
+    "leakage_risk": "medium",
+    "leakage_note": "members_v3 is one undated extract: attributes may have changed after the cutoff. Users who registered on/after the cutoff are treated exactly like users with no members row, so post-cutoff registration is not revealed.",
+    "use_in_model": true
+  },
+  {
+    "name": "age",
+    "group": "demographics",
+    "kind": "numeric",
+    "definition": "Age in years if 10-90, else NULL (Phase 1 rule M1).",
+    "rationale": "Built for the fairness audit.",
+    "leakage_risk": "medium",
+    "leakage_note": "members_v3 is one undated extract: attributes may have changed after the cutoff. Users who registered on/after the cutoff are treated exactly like users with no members row, so post-cutoff registration is not revealed.",
+    "use_in_model": false
+  },
+  {
+    "name": "gender",
+    "group": "demographics",
+    "kind": "categorical",
+    "definition": "male / female / unknown.",
+    "rationale": "Built for the fairness audit.",
+    "leakage_risk": "medium",
+    "leakage_note": "members_v3 is one undated extract: attributes may have changed after the cutoff. Users who registered on/after the cutoff are treated exactly like users with no members row, so post-cutoff registration is not revealed.",
+    "use_in_model": false
+  },
+  {
+    "name": "city",
+    "group": "demographics",
+    "kind": "categorical",
+    "definition": "City code.",
+    "rationale": "Built for the fairness audit; can act as a proxy for protected traits.",
+    "leakage_risk": "medium",
+    "leakage_note": "members_v3 is one undated extract: attributes may have changed after the cutoff. Users who registered on/after the cutoff are treated exactly like users with no members row, so post-cutoff registration is not revealed.",
+    "use_in_model": false
+  },
+  {
+    "name": "r_score",
+    "group": "RFM",
+    "kind": "numeric",
+    "definition": "RFM recency score 1-5 (Phase 4).",
+    "rationale": "Binned recency on the reference scale.",
+    "leakage_risk": "low",
+    "leakage_note": "Phase 4 scores use pre-cutoff snapshot data, with cut-points and clusters fitted on snapshot A only and applied unchanged to B.",
+    "use_in_model": true
+  },
+  {
+    "name": "f_score",
+    "group": "RFM",
+    "kind": "numeric",
+    "definition": "RFM frequency score 1-5.",
+    "rationale": "Binned frequency.",
+    "leakage_risk": "low",
+    "leakage_note": "Phase 4 scores use pre-cutoff snapshot data, with cut-points and clusters fitted on snapshot A only and applied unchanged to B.",
+    "use_in_model": true
+  },
+  {
+    "name": "m_score",
+    "group": "RFM",
+    "kind": "numeric",
+    "definition": "RFM monetary score 1-5.",
+    "rationale": "Binned spend.",
+    "leakage_risk": "low",
+    "leakage_note": "Phase 4 scores use pre-cutoff snapshot data, with cut-points and clusters fitted on snapshot A only and applied unchanged to B.",
+    "use_in_model": true
+  },
+  {
+    "name": "personal_recency",
+    "group": "RFM",
+    "kind": "numeric",
+    "definition": "Current gap / the user's own median gap between active days (needs 5+ active days).",
+    "rationale": "Silence relative to the user's own routine.",
+    "leakage_risk": "low",
+    "leakage_note": "Phase 4 scores use pre-cutoff snapshot data, with cut-points and clusters fitted on snapshot A only and applied unchanged to B.",
+    "use_in_model": true
+  },
+  {
+    "name": "rfm_segment",
+    "group": "RFM",
+    "kind": "categorical",
+    "definition": "Rule-based RFM segment (Phase 4).",
+    "rationale": "Interpretable engagement segment.",
+    "leakage_risk": "low",
+    "leakage_note": "Phase 4 scores use pre-cutoff snapshot data, with cut-points and clusters fitted on snapshot A only and applied unchanged to B.",
+    "use_in_model": true
+  },
+  {
+    "name": "rfm_group",
+    "group": "RFM",
+    "kind": "categorical",
+    "definition": "K-Means cluster for users who paid and listened; rule label otherwise.",
+    "rationale": "Captures low-payment listeners (cluster 3: 15.2% churn).",
+    "leakage_risk": "low",
+    "leakage_note": "Phase 4 scores use pre-cutoff snapshot data, with cut-points and clusters fitted on snapshot A only and applied unchanged to B.",
+    "use_in_model": true
+  }
+]

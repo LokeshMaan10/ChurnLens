@@ -1,0 +1,27 @@
+# Credentials: never commit
+kaggle.json
+.kaggle/
+.env
+
+# Data: never commit
+data/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+mlruns/
+
+# Trained models
+models/
+
+# Generated per-run artefacts that contain customer ids or are reproducible
+reports/agent_traces/
+reports/agent_charts/
+reports/monitoring/evidently_*.html
+stolen.csv
+
+# Build metadata
+*.egg-info/

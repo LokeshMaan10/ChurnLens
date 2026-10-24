@@ -1,0 +1,72 @@
+# Data acquisition and sampling settings (Phase -1).
+# All ingestion code reads from here; switching to `mode: full` needs no code changes.
+
+mode: small            # small | full
+user_sample_pct: 10    # % of users kept (ignored in full mode: everyone is kept)
+sample_seed: 42
+log_window_start: 2016-10-01
+log_window_end:   2017-02-28
+
+source:
+  competition: kkbox-churn-prediction-challenge
+  url: https://www.kaggle.com/competitions/kkbox-churn-prediction-challenge/data
+  download_retries: 2
+
+paths:
+  downloads: data/raw/_downloads          # compressed .7z archives land here
+  raw_dir: data/raw/{mode}                 # filtered Parquet output, per mode
+  manifest_md: data/raw/MANIFEST.md
+  manifest_json: data/raw/manifest.json    # machine-readable twin of MANIFEST.md
+  kaggle_token: ~/.kaggle/kaggle.json      # existence is checked, contents never read
+
+# Spec default is to delete archives after validation. Kept for now because
+# there is no Kaggle API token on this machine, so re-downloading is manual.
+keep_archives: true
+
+stream:
+  chunk_bytes: 67108864        # 64 MiB of decompressed CSV parsed per batch
+  progress_every_chunks: 10
+  parquet_compression: zstd
+
+# One entry per competition file we ingest. `output` is relative to raw_dir.
+tables:
+  train:
+    archive: train.csv.7z
+    output: train.parquet
+    kind: labels
+  train_v2:
+    archive: train_v2.csv.7z
+    output: train_v2.parquet
+    kind: labels
+  members_v3:
+    archive: members_v3.csv.7z
+    output: members_v3.parquet
+    kind: members
+    date_columns: [registration_init_time]
+  transactions:
+    archive: transactions.csv.7z
+    output: transactions.parquet
+    kind: transactions
+    date_columns: [transaction_date, membership_expire_date]
+  transactions_v2:
+    archive: transactions_v2.csv.7z
+    output: transactions_v2.parquet
+    kind: transactions
+    date_columns: [transaction_date, membership_expire_date]
+  user_logs_v2:
+    archive: user_logs_v2.csv.7z
+    output: scoring_only/user_logs_v2   # month-partitioned; NEVER a training input
+    kind: logs
+    date_columns: [date]
+    partition_by_month: true
+    # March 2017 lies outside log_window_end, so the training log window must
+    # not be applied here or every row would be dropped. User sampling still applies.
+    apply_log_window: false
+    scoring_only: true
+  user_logs:
+    archive: user_logs.csv.7z
+    output: user_logs                   # month-partitioned
+    kind: logs
+    date_columns: [date]
+    partition_by_month: true
+    apply_log_window: true

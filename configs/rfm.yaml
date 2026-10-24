@@ -1,0 +1,77 @@
+# Phase 4: subscription-adapted RFM and segmentation.
+#   Recency   = days since last listen (before the cutoff)
+#   Frequency = active listening days in the frequency window
+#   Monetary  = amount paid (non-cancel transactions) in the monetary window
+
+# Score cut-points are fitted on this snapshot and applied unchanged to the others.
+reference_snapshot: A
+
+recency_cap_days: 90          # no listen within this many days -> recency = cap + 1
+frequency_window_days: 90
+monetary_window_days: 180
+
+# Scores 1..n_levels: ceil(n_levels * share of reference users at or below the value),
+# with recency negated so that higher = better for all three. Tie-aware: equal values
+# always get equal scores, and some scores may go unused when values pile up.
+n_levels: 5
+
+# Personalised recency = current gap (recency_days) / the user's own median gap
+# between active days in the frequency window. Needs enough history to be meaningful.
+personal_recency:
+  min_active_days: 5
+
+# Segment rules: DuckDB SQL predicates over the columns recency_days, frequency_days,
+# monetary, personal_recency, r_score, f_score, m_score. Evaluated top to bottom;
+# the first match wins. The last rule must be a catch-all (`true`).
+segments:
+  - name: Dormant
+    when: frequency_days = 0
+    meaning: no listening at all in the last 90 days
+  - name: Breaking routine
+    when: personal_recency >= 3 AND recency_days >= 3 AND f_score >= 3
+    meaning: usually a frequent listener, but the current silence is at least 3x their own typical gap
+  - name: Champions
+    when: r_score = 5 AND f_score >= 4 AND m_score >= 4
+    meaning: listened yesterday, listens often, paid in the top two fifths
+  - name: Loyal listeners
+    when: r_score >= 4 AND f_score >= 4
+    meaning: recent and frequent, lower spend
+  - name: Lapsing
+    when: r_score <= 2 AND f_score >= 3
+    meaning: was a regular listener but has not listened recently
+  - name: Recent but light
+    when: r_score >= 4 AND f_score <= 2
+    meaning: listened recently but on few days
+  - name: Low engagement
+    when: f_score <= 2
+    meaning: few active days and not recent
+  - name: Steady
+    when: "true"
+    meaning: everyone else (mid recency and frequency)
+
+kmeans:
+  enabled: true
+  # Only users who paid and listened are clustered (user decision 2026-10-23). With everyone
+  # included, K-Means mostly isolated two piles (paid 0 NTD; 0 listening days) that plain
+  # rules describe exactly. DuckDB SQL predicate over the raw RFM columns.
+  population: monetary > 0 AND frequency_days > 0
+  # Labels for users outside the population: first match wins, last rule must be `true`.
+  excluded_groups:
+    - {name: "not clustered: no payment, no listening", when: monetary = 0 AND frequency_days = 0}
+    - {name: "not clustered: no payment", when: monetary = 0}
+    - {name: "not clustered: no listening", when: frequency_days = 0}
+    - {name: "not clustered: other", when: "true"}
+  k_range: [2, 10]
+  n_init: 10
+  silhouette_sample: 20000
+  seed: 42
+  # Keep K-Means only if clusters add churn information beyond the RFM segments:
+  # Cramér's V of churn vs (segment x cluster) must exceed V vs segment alone by this.
+  min_cramers_v_gain: 0.02
+
+figures:
+  dir: reports/figures
+  dpi: 150
+outputs:
+  rfm_dir: data/processed/{mode}/rfm
+  tables_dir: reports/rfm

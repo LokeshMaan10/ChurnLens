@@ -1,0 +1,12 @@
+dimension,title,groups_tested,chi2,p_value,cramers_v
+payment_method,Payment method (last plan),34,14698.47093,0,0.3846573196
+auto_renew,Auto-renew (last plan),3,14231.93689,0,0.3785035236
+list_price,"List price, NTD (last plan)",34,11259.22413,0,0.3366604925
+plan_days,"Plan length, days (last plan)",24,9489.295341,0,0.3090686136
+price_type,Price paid vs list (last plan),5,3552.346053,0,0.1891017532
+registered_via,Registration channel,6,3027.770161,0,0.1745819638
+age_band,Age band,8,1335.743372,3.081731314e-284,0.1159576582
+gender,Gender,4,585.7872182,1.214706299e-126,0.07679056584
+city,City,22,512.1014218,4.362162581e-95,0.07179858958
+tenure_band,Tenure at cutoff,8,113.6588444,1.597115302e-21,0.03382513513
+ever_cancelled,Cancelled before cutoff,2,101.3739841,7.615748716e-24,0.03194487402

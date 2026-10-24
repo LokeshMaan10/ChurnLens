@@ -1,0 +1,29 @@
+# Phase 0 data-audit thresholds. Flags only: nothing is cleaned here (that is Phase 1).
+
+# Plausible subscriber age range for `bd`. Values outside are flagged, not dropped.
+plausible_age:
+  min: 10
+  max: 90
+
+# A day has 86,400 seconds; more listening than that in one daily row is impossible.
+max_seconds_per_day: 86400
+
+# Dates before this are treated as implausible (e.g. the 1970-01-01 epoch default).
+# The earliest registration_init_time in members_v3 is 2004-03-26.
+min_plausible_date: 2004-01-01
+
+# Natural keys checked for duplicates. Empty list = full-row duplicates only.
+key_columns:
+  train: [msno]
+  train_v2: [msno]
+  members_v3: [msno]
+  transactions: []
+  transactions_v2: []
+  user_logs: [msno, date]
+  user_logs_v2: [msno, date]
+
+outputs:
+  results_md: reports/results.md
+  profile_json: reports/audit/profile.json
+  data_dictionary_md: docs/data_dictionary.md
+  column_docs_yaml: docs/columns.yaml

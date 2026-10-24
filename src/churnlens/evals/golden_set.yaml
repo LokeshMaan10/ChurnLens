@@ -1,0 +1,129 @@
+# Phase 13 golden set. Every expected answer is COMPUTED by the reference SQL at eval time
+# (never typed in). Reference queries are written independently of the analyst's templates.
+#
+# compare:
+#   scalar  the reference returns one value; the answer must show it (display: pct|number)
+#   rows    the reference returns (label, value) rows; each label's line in the answer must
+#           show its value
+# The analyst reports grouped churn rates only for groups with >= 200 users (product rule),
+# so grouped references apply the same rule.
+
+analyst:
+  # --- overall churn
+  - {id: churn_a, question: "What is the churn rate in snapshot A?", compare: scalar, display: pct,
+     sql: "SELECT AVG(is_churn) FROM labels_a"}
+  - {id: churn_b, question: "What share of users churned in the test snapshot?", compare: scalar, display: pct,
+     sql: "SELECT AVG(is_churn) FROM labels_b"}
+  - {id: churners_a, question: "How many users churned in snapshot A?", compare: scalar, display: number,
+     sql: "SELECT SUM(is_churn) FROM labels_a"}
+  - {id: churn_march, question: "Churn rate for the March expirations (snapshot B)?", compare: scalar, display: pct,
+     sql: "SELECT AVG(is_churn) FROM labels_b"}
+  # --- churn by dimension
+  - {id: by_autorenew, question: "Show churn rate by auto-renew status", compare: rows, display: pct,
+     sql: "SELECT CAST(f.last_is_auto_renew AS VARCHAR), AVG(l.is_churn) FROM labels_a l JOIN features_a f ON l.msno = f.msno GROUP BY 1 HAVING COUNT(*) >= 200"}
+  - {id: by_payment, question: "Churn rate by payment method in snapshot A", compare: rows, display: pct,
+     sql: "SELECT CAST(f.last_payment_method AS VARCHAR), AVG(l.is_churn) FROM labels_a l JOIN features_a f ON l.msno = f.msno GROUP BY 1 HAVING COUNT(*) >= 200"}
+  - {id: by_channel, question: "How does churn differ across registration channel?", compare: rows, display: pct,
+     sql: "SELECT CAST(f.registered_via AS VARCHAR), AVG(l.is_churn) FROM labels_a l JOIN features_a f ON l.msno = f.msno GROUP BY 1 HAVING COUNT(*) >= 200"}
+  - {id: by_city, question: "Break churn down by city", compare: rows, display: pct,
+     sql: "SELECT CAST(f.city AS VARCHAR), AVG(l.is_churn) FROM labels_a l JOIN features_a f ON l.msno = f.msno GROUP BY 1 HAVING COUNT(*) >= 200"}
+  - {id: by_gender, question: "churn rate per gender", compare: rows, display: pct,
+     sql: "SELECT CAST(f.gender AS VARCHAR), AVG(l.is_churn) FROM labels_a l JOIN features_a f ON l.msno = f.msno GROUP BY 1 HAVING COUNT(*) >= 200"}
+  - {id: by_segment, question: "What is the churn rate for each RFM segment?", compare: rows, display: pct,
+     sql: "SELECT r.segment, AVG(l.is_churn) FROM labels_a l JOIN rfm_a r ON l.msno = r.msno GROUP BY 1 HAVING COUNT(*) >= 200"}
+  - {id: by_cluster, question: "Churn by customer group", compare: rows, display: pct,
+     sql: "SELECT r.cluster, AVG(l.is_churn) FROM labels_a l JOIN rfm_a r ON l.msno = r.msno GROUP BY 1 HAVING COUNT(*) >= 200"}
+  - {id: by_plan, question: "Churn rate split by plan length", compare: rows, display: pct,
+     sql: "SELECT CAST(f.last_plan_days AS VARCHAR), AVG(l.is_churn) FROM labels_a l JOIN features_a f ON l.msno = f.msno GROUP BY 1 HAVING COUNT(*) >= 200"}
+  - {id: by_autorenew_b, question: "Churn by auto-renew in snapshot B", compare: rows, display: pct,
+     sql: "SELECT CAST(f.last_is_auto_renew AS VARCHAR), AVG(l.is_churn) FROM labels_b l JOIN features_b f ON l.msno = f.msno GROUP BY 1 HAVING COUNT(*) >= 200"}
+  - {id: by_channel_b, question: "Break down churn by registration channel for the test snapshot", compare: rows, display: pct,
+     sql: "SELECT CAST(f.registered_via AS VARCHAR), AVG(l.is_churn) FROM labels_b l JOIN features_b f ON l.msno = f.msno GROUP BY 1 HAVING COUNT(*) >= 200"}
+  # --- counts
+  - {id: n_high_risk, question: "How many customers are high risk?", compare: scalar, display: number,
+     sql: "SELECT COUNT(*) FROM customers WHERE risk_band = 'high'"}
+  - {id: n_low_risk, question: "How many low-risk customers do we have?", compare: scalar, display: number,
+     sql: "SELECT COUNT(*) FROM customers WHERE risk_band = 'low'"}
+  - {id: n_hh, question: "How many customers are high risk and high value?", compare: scalar, display: number,
+     sql: "SELECT COUNT(*) FROM customers WHERE risk_band = 'high' AND value_band = 'high'"}
+  - {id: n_ll, question: "Number of customers who are low risk and low value", compare: scalar, display: number,
+     sql: "SELECT COUNT(*) FROM customers WHERE risk_band = 'low' AND value_band = 'low'"}
+  - {id: n_list, question: "How many customers are on the contact list?", compare: scalar, display: number,
+     sql: "SELECT COUNT(*) FROM customers WHERE priority_rank > 0"}
+  - {id: n_high_value, question: "Count the customers in the high-value band", compare: scalar, display: number,
+     sql: "SELECT COUNT(*) FROM customers WHERE value_band = 'high'"}
+  - {id: n_customers, question: "How many customers are scored in snapshot B?", compare: scalar, display: number,
+     sql: "SELECT COUNT(*) FROM labels_b"}
+  # --- CLTV
+  - {id: cltv_avg, question: "What is the average CLTV?", compare: scalar, display: number,
+     sql: "SELECT AVG(cltv) FROM customers"}
+  - {id: cltv_median, question: "Median customer lifetime value?", compare: scalar, display: number,
+     sql: "SELECT MEDIAN(cltv) FROM customers"}
+  - {id: cltv_hh, question: "Average CLTV of high risk / high value customers", compare: scalar, display: number,
+     sql: "SELECT AVG(cltv) FROM customers WHERE quadrant = 'high risk / high value'"}
+  - {id: cltv_by_quadrant, question: "Average CLTV by quadrant", compare: rows, display: number,
+     sql: "SELECT quadrant, AVG(cltv) FROM customers GROUP BY 1"}
+  - {id: cltv_by_risk, question: "Show average CLTV by risk band", compare: rows, display: number,
+     sql: "SELECT risk_band, AVG(cltv) FROM customers GROUP BY 1"}
+  # --- value at risk
+  - {id: evar_total, question: "What is the total expected value at risk?", compare: scalar, display: number,
+     sql: "SELECT SUM(p_churn * cltv) FROM customers"}
+  - {id: evar_by_quadrant, question: "Total value at risk by quadrant", compare: rows, display: number,
+     sql: "SELECT quadrant, SUM(evar) FROM customers GROUP BY 1"}
+  - {id: evar_high, question: "How much value at risk sits with high-risk customers?", compare: scalar, display: number,
+     sql: "SELECT SUM(evar) FROM customers WHERE risk_band = 'high'"}
+  - {id: evar_list, question: "Value at risk of customers on the contact list", compare: scalar, display: number,
+     sql: "SELECT SUM(evar) FROM customers WHERE priority_rank > 0"}
+  # --- top lists (labels are 12-character msno prefixes, as shown in answers)
+  - {id: top5_evar, question: "Top 5 customers by value at risk", compare: rows, display: number,
+     sql: "SELECT LEFT(msno, 12), evar FROM customers ORDER BY evar DESC, msno LIMIT 5"}
+  - {id: top3_prob, question: "Top 3 customers by churn probability", compare: rows, display: pct,
+     sql: "SELECT LEFT(msno, 12), p_churn FROM customers ORDER BY p_churn DESC, msno LIMIT 3"}
+  - {id: riskiest5, question: "Who are the 5 riskiest customers? Show the top 5 most likely to churn", compare: rows, display: pct,
+     sql: "SELECT LEFT(msno, 12), p_churn FROM customers ORDER BY p_churn DESC, msno LIMIT 5"}
+  # --- actions, drivers, predictions
+  - {id: action_mix, question: "What is the action mix on the contact list?", compare: rows, display: number,
+     sql: "SELECT action, COUNT(*) FROM customers WHERE priority_rank > 0 GROUP BY 1"}
+  - {id: top_drivers, question: "Which drivers come up most often as the #1 driver?", compare: rows, display: number,
+     sql: "SELECT cluster, COUNT(*) FROM drivers WHERE rank = 1 GROUP BY 1 ORDER BY 2 DESC LIMIT 10"}
+  - {id: mean_pred_b, question: "What is the mean predicted churn probability?", compare: scalar, display: pct,
+     sql: "SELECT AVG(p_churn) FROM customers"}
+  - {id: mean_pred_a, question: "Mean predicted churn in snapshot A (training) vs actual", compare: scalar, display: pct,
+     sql: "SELECT AVG(p_churn) FROM predictions_a_oof"}
+  # --- transactions, listening, segments, members
+  - {id: n_cancels, question: "How many cancellation transactions are there?", compare: scalar, display: number,
+     sql: "SELECT COUNT(*) FROM transactions WHERE is_cancel = 1"}
+  - {id: avg_paid, question: "What is the average amount paid per transaction?", compare: scalar, display: number,
+     sql: "SELECT AVG(actual_amount_paid) FROM transactions WHERE is_cancel = 0"}
+  - {id: autorenew_share, question: "What share of transactions are auto-renew?", compare: scalar, display: pct,
+     sql: "SELECT AVG(CAST(is_auto_renew AS DOUBLE)) FROM transactions WHERE is_cancel = 0"}
+  - {id: rows_txn, question: "How many rows are in the transactions table?", compare: scalar, display: number,
+     sql: "SELECT COUNT(*) FROM transactions"}
+  - {id: listening, question: "Do churners listen less? Compare average minutes in the last 30 days for churned vs retained", compare: rows, display: number,
+     sql: "SELECT CASE WHEN l.is_churn = 1 THEN 'churned' ELSE 'retained' END, AVG(f.minutes_30d) FROM labels_a l JOIN features_a f ON l.msno = f.msno GROUP BY 1"}
+  - {id: segment_sizes, question: "How big is each RFM segment?", compare: rows, display: number,
+     sql: "SELECT segment, COUNT(*) FROM rfm_b GROUP BY 1"}
+  - {id: avg_age, question: "What is the average age of members?", compare: scalar, display: number,
+     sql: "SELECT AVG(age) FROM members"}
+  - {id: rows_members, question: "How many records are in the members table?", compare: scalar, display: number,
+     sql: "SELECT COUNT(*) FROM members"}
+
+# Non-analyst agents: graded against tool / pipeline outputs computed independently.
+copilot:
+  # Three customers chosen by rank on the stored contact list (computed at eval time).
+  - {id: brief_rank1, rank: 1}
+  - {id: brief_rank100, rank: 100}
+  - {id: brief_rank2000, rank: 2000}
+planner:
+  - {id: plan_default, question: "Plan a campaign with a budget of 150,000 NTD and 4,000 contacts", budget: 150000, capacity: 4000}
+  - {id: plan_small, question: "We have a budget of 20k and can reach 800 customers. Who should we contact?", budget: 20000, capacity: 800}
+monitoring:
+  - {id: drift_check, question: "Check drift and tell me if we need to retrain"}
+
+routing:
+  - {question: "What is the churn rate in snapshot A?", agent: analyst}
+  - {question: "Design an A/B test with a holdout for the outreach plan", agent: planner}
+  - {question: "Is there data drift? Should we retrain?", agent: monitoring}
+  - {question: "Tell me about customer {msno}", agent: copilot}
+  - {question: "Average CLTV by quadrant", agent: analyst}
+  - {question: "Write an incident note on the PSI alerts", agent: monitoring}

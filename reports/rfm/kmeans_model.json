@@ -1,0 +1,50 @@
+{
+  "k": 3,
+  "population": "monetary > 0 AND frequency_days > 0",
+  "label_map": {
+    "0": "cluster 1",
+    "1": "cluster 2",
+    "2": "cluster 3"
+  },
+  "features": [
+    "log1p(recency_days)",
+    "frequency_days",
+    "log1p(monetary)"
+  ],
+  "scaler_mean": [
+    1.29758721,
+    47.65631021,
+    6.481751829
+  ],
+  "scaler_scale": [
+    0.8564090528,
+    27.85149255,
+    0.4482777057
+  ],
+  "centroids": [
+    [
+      -0.4807125707,
+      0.5506973351,
+      0.3151384692
+    ],
+    [
+      1.248028569,
+      -1.062963958,
+      0.1101523348
+    ],
+    [
+      -0.1317057079,
+      -0.8762357866,
+      -2.513424277
+    ]
+  ],
+  "cramers_v_segments": 0.0678596377,
+  "cramers_v_clusters": 0.1342785529,
+  "cramers_v_segment_x_cluster": 0.1444462181,
+  "gain": 0.0765865804,
+  "adjusted_rand_index": 0.2041610959,
+  "keep": true,
+  "population_users": 79403,
+  "population_share": 0.7993054157,
+  "population_churn_rate": 0.0565217939
+}

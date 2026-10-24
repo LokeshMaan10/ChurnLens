@@ -1,0 +1,38 @@
+# Phase 7: explainability. SHAP values explain the RAW model score (log-odds of the
+# class-weighted LightGBM). Calibration (sigmoid) is monotone, so a driver that raises
+# the raw score raises the calibrated probability too, but contributions are in
+# log-odds, not probability points.
+
+# Snapshot(s) whose users get per-customer explanations (the scored population).
+explain_snapshots: [B]
+seed: 42
+
+# Global plots use a seeded sample; per-customer drivers use every user.
+global_sample: 20000
+summary_top_n: 15
+dependence_top_n: 4
+
+# Correlation clusters: numeric features whose |Spearman rho| exceeds this are merged
+# (average-linkage hierarchical clustering on 1 - |rho|). Drivers and grouped importance
+# are reported per cluster so near-duplicates (minutes_7d / 14d / 30d) count once.
+cluster_abs_rho: 0.8
+cluster_sample: 20000
+
+# Per-customer drivers: the top N risk-raising clusters (positive SHAP), each described
+# by its strongest member feature.
+top_drivers: 5
+min_driver_contribution: 0.01   # log-odds; smaller contributions are not reported as drivers
+
+# Example waterfalls in the report: users at these calibrated-probability ranks
+# (share of the population from the top).
+waterfall_examples:
+  - {label: high risk, quantile: 0.005}
+  - {label: medium risk, quantile: 0.10}
+  - {label: low risk, quantile: 0.80}
+waterfall_top_n: 10
+
+outputs:
+  explain_dir: data/processed/{mode}/explain
+  tables_dir: reports/explain
+  figures_dir: reports/figures
+  dpi: 150

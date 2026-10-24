@@ -1,0 +1,77 @@
+feature,group,kind,median_ref,median_cur,in_model,psi,band,missing_ref,missing_cur,missing_flag,per_user_median_change,clock_shift
+days_since_first_transaction,history,numeric,510,528,True,0.687291,major,0.002054,0.002499,False,28,True
+days_since_last_transaction,history,numeric,15,15,True,0.184799,moderate,0.002054,0.002499,False,-3,False
+days_to_expiry,plan,numeric,17,16,True,0.10388,moderate,0.002054,0.002509,False,,False
+days_to_latest_txn_expiry,plan,numeric,16,15,True,0.087955,stable,0.002064,0.002499,False,,False
+m_score,RFM,numeric,3,3,True,0.038482,stable,0,0,False,,False
+active_days_ratio_7_23,listening trend,numeric,0.96638655,1,True,0.032343,stable,0.239672,0.236494,False,,False
+minutes_slope_30d,listening trend,numeric,0,0,True,0.029786,stable,0,0,False,,False
+minutes_ratio_7_23,listening trend,numeric,0.7971613,0.93428724,True,0.027036,stable,0.239672,0.236494,False,,False
+total_paid_365d,history,numeric,1188,1188,True,0.014945,stable,0,0,False,,False
+rfm_segment,RFM,categorical,,,True,0.01305,stable,0,0,False,,False
+days_since_last_listen,engagement consistency,numeric,2,2,True,0.011115,stable,0,0,False,0,False
+minutes_ratio_30_60,listening trend,numeric,0.961708,0.895033855,True,0.010739,stable,0.226867,0.223361,False,,False
+n_transactions_365d,history,numeric,11,12,True,0.00857,stable,0,0,False,,False
+personal_recency,RFM,numeric,1,1,True,0.008385,stable,0.237779,0.233707,False,,False
+r_score,RFM,numeric,3,3,True,0.007455,stable,0,0,False,,False
+active_days_7d,listening level,numeric,3,3,True,0.007419,stable,0,0,False,,False
+active_days_14d,listening level,numeric,6,6,True,0.006027,stable,0,0,False,,False
+active_days_ratio_30_60,listening trend,numeric,1,0.97777778,True,0.005066,stable,0.226867,0.223361,False,,False
+minutes_slope_90d,listening trend,numeric,0,0,True,0.003285,stable,0,0,False,,False
+days_since_last_cancel,cancellation,numeric,321,317,True,0.003142,stable,0.800091,0.795201,False,28,True
+tenure_days,tenure,numeric,1002,1012,True,0.00291,stable,0.11661,0.112694,False,28,True
+last_payment_method,plan,categorical,,,True,0.002899,stable,0.002054,0.002509,False,,False
+last_list_price,plan,numeric,149,149,True,0.002399,stable,0.002054,0.002509,False,,False
+last_amount_paid,plan,numeric,149,149,True,0.002395,stable,0.002054,0.002509,False,,False
+last_price_per_day,plan,numeric,4.96666667,4.96666667,True,0.002198,stable,0.002054,0.00253,False,,False
+minutes_7d,listening level,numeric,153.2539833,164.1742,True,0.002119,stable,0,0,False,,False
+minutes_per_active_day_30d,listening level,numeric,83.59970641,80.42501435,True,0.002004,stable,0.220666,0.218199,False,,False
+minutes_30d,listening level,numeric,857.6030417,800.3637,True,0.001994,stable,0,0,False,,False
+plays_30d,listening level,numeric,279,265,True,0.001828,stable,0,0,False,,False
+unique_songs_30d,listening level,numeric,209,199,True,0.001729,stable,0,0,False,,False
+plays_7d,listening level,numeric,51,54,True,0.001579,stable,0,0,False,,False
+active_days_30d,listening level,numeric,13,13,True,0.001362,stable,0,0,False,,False
+longest_inactive_gap_90d,engagement consistency,numeric,11,11,True,0.001055,stable,0,0,False,,False
+active_days_60d,listening level,numeric,25,25,True,0.001047,stable,0,0,False,,False
+registered_via,tenure,categorical,,,True,0.001019,stable,0.11661,0.112694,False,,False
+unique_songs_7d,listening level,numeric,39,41,True,0.001015,stable,0,0,False,,False
+share_auto_renew_365d,history,numeric,1,1,True,0.000861,stable,0.010701,0.013328,False,,False
+completion_rate_change_30_60,listening quality,numeric,0.00883423,0.00757576,True,0.000842,stable,0.260308,0.259469,False,,False
+rfm_group,RFM,categorical,,,True,0.0008,stable,0,0,False,,False
+minutes_cv_90d,engagement consistency,numeric,1.54029993,1.5539353,True,0.000793,stable,0.187226,0.182091,False,,False
+last_list_price_zero,plan,binary,0,0,True,0.000778,stable,0.002054,0.002509,False,,False
+plays_60d,listening level,numeric,566,563,True,0.000737,stable,0,0,False,,False
+unique_song_share_90d,listening quality,numeric,0.80537772,0.80155642,True,0.000702,stable,0.187226,0.182091,False,,False
+active_days_90d,listening level,numeric,37,37,True,0.000645,stable,0,0,False,,False
+minutes_60d,listening level,numeric,1739.625608,1722.016183,True,0.000633,stable,0,0,False,,False
+unique_songs_60d,listening level,numeric,423,420,True,0.00061,stable,0,0,False,,False
+f_score,RFM,numeric,3,3,True,0.000594,stable,0,0,False,,False
+last_is_free,plan,binary,0,0,True,0.000571,stable,0.002054,0.002509,False,,False
+minutes_14d,listening level,numeric,372.8296833,361.4229,True,0.000559,stable,0,0,False,,False
+last_is_auto_renew,plan,binary,1,1,True,0.000557,stable,0.002054,0.002509,False,,False
+completion_rate_30d,listening quality,numeric,0.73648649,0.73637516,True,0.000508,stable,0.220666,0.218199,False,,False
+skip_rate_change_30_60,listening quality,numeric,-0.0064699,-0.00598435,True,0.00048,stable,0.260308,0.259469,False,,False
+unique_songs_90d,listening level,numeric,630,634,True,0.000444,stable,0,0,False,,False
+unique_song_share_30d,listening quality,numeric,0.8147714,0.81617647,True,0.000387,stable,0.220666,0.218199,False,,False
+plays_90d,listening level,numeric,840,847,True,0.000379,stable,0,0,False,,False
+last_plan_days,plan,numeric,30,30,True,0.000379,stable,0.002054,0.002509,False,,False
+age,demographics,numeric,28,28,False,0.000352,stable,0.608466,0.601201,False,,False
+city,demographics,categorical,,,False,0.000344,stable,0.11661,0.112694,False,,False
+minutes_90d,listening level,numeric,2584.697317,2600.45675,True,0.000342,stable,0,0,False,,False
+unique_songs_14d,listening level,numeric,91,89,True,0.000319,stable,0,0,False,,False
+plays_14d,listening level,numeric,122,119,True,0.000317,stable,0,0,False,,False
+completion_rate_90d,listening quality,numeric,0.72507123,0.72631579,True,0.000284,stable,0.187226,0.182091,False,,False
+skip_rate_90d,listening quality,numeric,0.16317016,0.16232128,True,0.000275,stable,0.187226,0.182091,False,,False
+gender,demographics,categorical,,,False,0.00026,stable,0.11661,0.112694,False,,False
+n_cancels_all,cancellation,numeric,0,0,True,0.000207,stable,0,0,False,,False
+n_plan_changes_365d,history,numeric,0,0,True,0.00019,stable,0,0,False,,False
+skip_rate_30d,listening quality,numeric,0.15384615,0.15384615,True,0.000176,stable,0.220666,0.218199,False,,False
+member_info_missing,tenure,binary,0,0,True,0.000151,stable,0,0,False,,False
+n_promo_txns_180d,history,numeric,0,0,True,0.000109,stable,0,0,False,,False
+last_discount_amount,plan,numeric,0,0,True,9.5e-05,stable,0.002054,0.002509,False,,False
+last_txn_is_cancel,cancellation,binary,0,0,True,9.5e-05,stable,0.002054,0.002499,False,,False
+last_is_discounted,plan,binary,0,0,True,9.3e-05,stable,0.002054,0.002509,False,,False
+no_transaction_history,history,binary,0,0,True,8.8e-05,stable,0,0,False,,False
+n_cancels_365d,cancellation,numeric,0,0,True,5.6e-05,stable,0,0,False,,False
+n_payment_method_changes_365d,history,numeric,0,0,True,2.9e-05,stable,0,0,False,,False
+capped_days_90d,data quality,numeric,0,0,True,1e-06,stable,0,0,False,,False

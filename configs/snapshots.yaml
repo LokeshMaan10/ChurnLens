@@ -1,0 +1,19 @@
+# Out-of-time snapshot design. Features for a snapshot may use only data
+# strictly before its cutoff. Built by `python -m churnlens.snapshots.build`.
+
+snapshots:
+  A:
+    labels: train            # Feb 2017 expirations
+    cutoff: 2017-02-01
+    role: train_validation
+  B:
+    labels: train_v2         # Mar 2017 expirations
+    cutoff: 2017-03-01
+    role: test
+
+# Label verification only (never features): KKBox's rule is "churn = no new valid
+# subscription within this many days after the membership expires".
+renewal_window_days: 30
+
+outputs:
+  snapshot_dir: data/processed/{mode}/snapshots

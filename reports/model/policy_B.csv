@@ -1,0 +1,4 @@
+policy,contacted,contacted_share,churners_contacted,total_cost,cost_per_user
+model (contact if p >= threshold),7827,0.08049405062,4783,4822560,49.5959357
+contact nobody,0,0,0,5305200,54.55947839
+contact everybody,97237,1,8842,6896010,70.91960879

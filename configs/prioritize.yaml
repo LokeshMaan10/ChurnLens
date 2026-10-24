@@ -1,0 +1,69 @@
+# Phase 9: prioritization and actions.
+#   expected_value_at_risk (EVaR) = calibrated P(churn) x CLTV
+#   expected benefit of an action = EVaR x save_rate(action) - cost(action)
+# All action costs and save rates are PLACEHOLDER ASSUMPTIONS (no experiment yet);
+# Phase 10's A/B tooling is how real save rates would be measured.
+
+snapshot: B
+# CLTV column: "auto" uses the Phase 8 backtest winner (reports/value/cltv_choice.txt).
+cltv_method: auto
+# Risk band: "high" when P(churn) >= the Phase 6 cost-based threshold.
+risk_threshold: from_model
+# Value band: "high" when CLTV >= this quantile of the snapshot's CLTV (no labels used).
+value_quantile: 0.5
+
+actions:
+  monitor:                   {cost: 0,   save_rate: 0.00, description: "No outreach; keep monitoring"}
+  payment_support:           {cost: 10,  save_rate: 0.20, description: "Help fix or switch the payment method"}
+  auto_renew_incentive:      {cost: 75,  save_rate: 0.30, description: "Bonus month for switching on auto-renew"}
+  auto_renew_reminder:       {cost: 5,   save_rate: 0.10, description: "In-app reminder to switch on auto-renew"}
+  win_back_offer:            {cost: 100, save_rate: 0.25, description: "Discount on the next renewal after a cancellation"}
+  cancellation_survey:       {cost: 5,   save_rate: 0.05, description: "Ask why they cancelled; offer help"}
+  trial_conversion_offer:    {cost: 50,  save_rate: 0.20, description: "First paid month at a discount after a free/zero-price plan"}
+  content_reengagement:      {cost: 5,   save_rate: 0.08, description: "Personalised playlist / new-release push"}
+  plan_upgrade_offer:        {cost: 60,  save_rate: 0.20, description: "Longer plan at a discount"}
+  general_retention_message: {cost: 5,   save_rate: 0.05, description: "Generic 'we miss you' message"}
+
+# Rules: DuckDB SQL predicates over columns risk_band, value_band, p_churn, cltv, evar,
+# driver_feature, driver_group, driver_cluster (the customer's #1 risk-raising driver
+# from Phase 7; NULL if none). Evaluated top to bottom; first match wins; the last rule
+# must be a catch-all (`true`).
+rules:
+  - {name: low risk, when: "risk_band = 'low'", action: monitor}
+  - name: payment friction
+    when: "driver_feature IN ('last_payment_method', 'n_payment_method_changes_365d')"
+    action: payment_support
+  - name: not on auto-renew, high value
+    when: "driver_feature IN ('last_is_auto_renew', 'share_auto_renew_365d') AND value_band = 'high'"
+    action: auto_renew_incentive
+  - name: not on auto-renew, lower value
+    when: "driver_feature IN ('last_is_auto_renew', 'share_auto_renew_365d')"
+    action: auto_renew_reminder
+  - {name: "cancelled, high value", when: "driver_group = 'cancellation' AND value_band = 'high'", action: win_back_offer}
+  - {name: "cancelled, lower value", when: "driver_group = 'cancellation'", action: cancellation_survey}
+  - name: free or promotional plan
+    when: "driver_feature IN ('last_is_free', 'last_list_price_zero', 'last_is_discounted', 'n_promo_txns_180d', 'last_amount_paid', 'last_price_per_day', 'last_list_price')"
+    action: trial_conversion_offer
+  - name: listening decline
+    when: "driver_group IN ('listening level', 'listening trend', 'engagement consistency', 'listening quality', 'RFM')"
+    action: content_reengagement
+  - {name: "plan or history, high value", when: "driver_group IN ('plan', 'history') AND value_band = 'high'", action: plan_upgrade_offer}
+  - {name: other high risk, when: "true", action: general_retention_message}
+
+# Budget optimizer: choose whom to contact (each user gets their rule-assigned action)
+# to maximise total expected benefit within BOTH limits. Users are ranked by
+# benefit - lambda x cost; lambda (the shadow price of one NTD of budget) is searched on
+# a grid and the best feasible selection is kept. lambda = 0 suits a binding contact cap,
+# large lambda approaches benefit-per-NTD ranking for a binding budget.
+budget:
+  total_ntd: 150000
+  outreach_capacity: 4000   # max contacted users (monitor does not count)
+  lambda_grid_points: 60    # log-spaced between the limits below, plus 0
+  lambda_min: 0.001
+  lambda_max: 1000
+
+outputs:
+  prioritize_dir: data/processed/{mode}/prioritize
+  tables_dir: reports/prioritize
+  figures_dir: reports/figures
+  dpi: 150

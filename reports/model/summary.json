@@ -1,0 +1,97 @@
+{
+  "selected": "lightgbm",
+  "threshold": 0.255,
+  "confusion": {
+    "threshold": 0.255,
+    "tn": 85351,
+    "fp": 3044,
+    "fn": 4059,
+    "tp": 4783,
+    "precision": 0.6110898172990928,
+    "recall": 0.5409409635828998,
+    "fpr": 0.03443633689688331,
+    "contacted_share": 0.08049405061859169
+  },
+  "models": {
+    "logreg": {
+      "oof": {
+        "pr_auc": 0.4963780664555673,
+        "roc_auc": 0.872639328750949,
+        "log_loss": 0.15882289922299822,
+        "brier": 0.04253242804224474,
+        "base_rate": 0.06424401046909603,
+        "mean_predicted": 0.06427177597567024
+      },
+      "test": {
+        "pr_auc": 0.5497946164475497,
+        "roc_auc": 0.8619909657330079,
+        "log_loss": 0.21371563411806024,
+        "brier": 0.05819770133206369,
+        "base_rate": 0.09093246397976079,
+        "mean_predicted": 0.06465704269142479
+      },
+      "calibration": "isotonic",
+      "best_params": {
+        "clf__C": 0.03148911647956861
+      }
+    },
+    "random_forest": {
+      "oof": {
+        "pr_auc": 0.5452884381185599,
+        "roc_auc": 0.8806822238385624,
+        "log_loss": 0.1532094717725521,
+        "brier": 0.04066432955794423,
+        "base_rate": 0.06424401046909603,
+        "mean_predicted": 0.06421339202845246
+      },
+      "test": {
+        "pr_auc": 0.5646622244228793,
+        "roc_auc": 0.8744297578602062,
+        "log_loss": 0.20872901997860602,
+        "brier": 0.05784092746410361,
+        "base_rate": 0.09093246397976079,
+        "mean_predicted": 0.06445766081506665
+      },
+      "calibration": "sigmoid",
+      "best_params": {
+        "clf__min_samples_leaf": 5,
+        "clf__max_features": 0.2,
+        "clf__max_depth": 24
+      }
+    },
+    "lightgbm": {
+      "oof": {
+        "pr_auc": 0.5627525925276472,
+        "roc_auc": 0.8860078169773419,
+        "log_loss": 0.15009229925891235,
+        "brier": 0.03974750217442886,
+        "base_rate": 0.06424401046909603,
+        "mean_predicted": 0.06424112741187496
+      },
+      "test": {
+        "pr_auc": 0.5744317794647952,
+        "roc_auc": 0.8733615622510559,
+        "log_loss": 0.20590038294378094,
+        "brier": 0.056034750975439244,
+        "base_rate": 0.09093246397976079,
+        "mean_predicted": 0.06683098322304842
+      },
+      "calibration": "sigmoid",
+      "best_params": {
+        "clf__colsample_bytree": 0.7,
+        "clf__learning_rate": 0.013399060561509796,
+        "clf__min_child_samples": 200,
+        "clf__num_leaves": 127,
+        "clf__reg_lambda": 0.057624872164786026,
+        "clf__subsample": 1.0,
+        "clf__subsample_freq": 1
+      }
+    }
+  },
+  "ablation": {
+    "oof_without": 0.5627525925276472,
+    "oof_with": 0.5629254370526547,
+    "test_without": 0.5744317794647952,
+    "test_with": 0.5740370636268946
+  }
+}

@@ -1,0 +1,5 @@
+policy,contacted,spend,expected_saved_value,expected_net_benefit,actual_churners_contacted,churn_rate_contacted
+optimizer (benefit − λ × cost),4000,148780,408464.8375,259684.8375,2887,0.72175
+highest P(churn) first,4000,119865,356466.8358,236601.8358,2970,0.7425
+highest EVaR first,3159,150000,378977.6319,228977.6319,2425,0.7676479899
+"optimizer, benefit per NTD only (for comparison)",4000,20000,142810.8659,122810.8659,2493,0.62325

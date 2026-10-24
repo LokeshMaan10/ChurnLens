@@ -1,0 +1,74 @@
+feature,cluster
+minutes_7d,longest_inactive_gap_90d (+22)
+active_days_7d,longest_inactive_gap_90d (+22)
+plays_7d,longest_inactive_gap_90d (+22)
+unique_songs_7d,longest_inactive_gap_90d (+22)
+minutes_14d,longest_inactive_gap_90d (+22)
+active_days_14d,longest_inactive_gap_90d (+22)
+plays_14d,longest_inactive_gap_90d (+22)
+unique_songs_14d,longest_inactive_gap_90d (+22)
+minutes_30d,longest_inactive_gap_90d (+22)
+active_days_30d,longest_inactive_gap_90d (+22)
+plays_30d,longest_inactive_gap_90d (+22)
+unique_songs_30d,longest_inactive_gap_90d (+22)
+minutes_60d,longest_inactive_gap_90d (+22)
+active_days_60d,longest_inactive_gap_90d (+22)
+plays_60d,longest_inactive_gap_90d (+22)
+unique_songs_60d,longest_inactive_gap_90d (+22)
+minutes_90d,longest_inactive_gap_90d (+22)
+active_days_90d,longest_inactive_gap_90d (+22)
+plays_90d,longest_inactive_gap_90d (+22)
+unique_songs_90d,longest_inactive_gap_90d (+22)
+minutes_ratio_7_23,minutes_ratio_7_23
+active_days_ratio_7_23,active_days_ratio_7_23
+minutes_ratio_30_60,minutes_ratio_30_60
+active_days_ratio_30_60,active_days_ratio_30_60
+minutes_slope_30d,minutes_slope_30d
+minutes_slope_90d,minutes_slope_90d
+minutes_cv_90d,longest_inactive_gap_90d (+22)
+longest_inactive_gap_90d,longest_inactive_gap_90d (+22)
+days_since_last_listen,days_since_last_listen (+1)
+minutes_per_active_day_30d,minutes_per_active_day_30d
+capped_days_90d,capped_days_90d
+skip_rate_30d,skip_rate_90d (+3)
+completion_rate_30d,skip_rate_90d (+3)
+unique_song_share_30d,unique_song_share_30d (+1)
+skip_rate_90d,skip_rate_90d (+3)
+completion_rate_90d,skip_rate_90d (+3)
+unique_song_share_90d,unique_song_share_30d (+1)
+skip_rate_change_30_60,completion_rate_change_30_60 (+1)
+completion_rate_change_30_60,completion_rate_change_30_60 (+1)
+last_plan_days,last_plan_days
+last_list_price,last_list_price (+2)
+last_amount_paid,last_list_price (+2)
+last_discount_amount,last_discount_amount
+last_price_per_day,last_list_price (+2)
+last_is_discounted,last_is_discounted
+last_is_free,last_is_free
+last_list_price_zero,last_list_price_zero
+last_is_auto_renew,last_is_auto_renew (+1)
+last_txn_is_cancel,last_txn_is_cancel
+days_to_expiry,days_to_latest_txn_expiry (+1)
+days_to_latest_txn_expiry,days_to_latest_txn_expiry (+1)
+n_transactions_365d,n_transactions_365d
+total_paid_365d,total_paid_365d (+1)
+share_auto_renew_365d,last_is_auto_renew (+1)
+n_plan_changes_365d,n_plan_changes_365d
+n_payment_method_changes_365d,n_payment_method_changes_365d
+n_promo_txns_180d,n_promo_txns_180d
+n_cancels_all,n_cancels_all
+n_cancels_365d,days_since_last_cancel (+1)
+days_since_last_cancel,days_since_last_cancel (+1)
+days_since_last_transaction,days_since_last_transaction
+days_since_first_transaction,days_since_first_transaction
+no_transaction_history,no_transaction_history
+tenure_days,tenure_days
+member_info_missing,member_info_missing
+r_score,days_since_last_listen (+1)
+f_score,longest_inactive_gap_90d (+22)
+m_score,total_paid_365d (+1)
+personal_recency,personal_recency
+last_payment_method,last_payment_method
+registered_via,registered_via
+rfm_segment,rfm_segment
+rfm_group,rfm_group

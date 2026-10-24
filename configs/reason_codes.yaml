@@ -1,0 +1,67 @@
+# Plain-language reason codes. Each template states the customer's value neutrally;
+# the explanation layer appends "associated with higher predicted churn risk" (or
+# "lower"). Never causal wording.
+#
+# format types:
+#   pct_change  ratio r rendered as "down 62%" / "up 40%" / "unchanged"
+#   days        integer days
+#   minutes     rounded minutes
+#   ntd         NTD amount
+#   count       integer
+#   share       0..1 rendered as a percentage
+#   number      plain number (2 decimals)
+#   flag        0/1 -> uses `when_1` / `when_0` text
+#   category    categorical value inserted as-is
+# Features without an entry use: "<label>: <value>".
+
+templates:
+  minutes_ratio_30_60: {format: pct_change, text: "Listening time {value} in the last 30 days vs the 60 days before"}
+  minutes_ratio_7_23: {format: pct_change, text: "Listening time {value} in the last week vs the rest of the month"}
+  active_days_ratio_30_60: {format: pct_change, text: "Days with listening {value} in the last 30 days vs the 60 days before"}
+  active_days_ratio_7_23: {format: pct_change, text: "Days with listening {value} in the last week vs the rest of the month"}
+  minutes_slope_30d: {format: number, text: "Daily listening trend over 30 days: {value} min/day per day"}
+  minutes_slope_90d: {format: number, text: "Daily listening trend over 90 days: {value} min/day per day"}
+  days_since_last_listen: {format: days, text: "Last listened {value} days before the cutoff"}
+  longest_inactive_gap_90d: {format: days, text: "Longest break without listening in 90 days: {value} days"}
+  active_days_30d: {format: count, text: "Listened on {value} of the last 30 days"}
+  active_days_90d: {format: count, text: "Listened on {value} of the last 90 days"}
+  minutes_30d: {format: minutes, text: "{value} minutes of listening in the last 30 days"}
+  minutes_90d: {format: minutes, text: "{value} minutes of listening in the last 90 days"}
+  minutes_per_active_day_30d: {format: minutes, text: "{value} minutes per listening day (last 30 days)"}
+  minutes_cv_90d: {format: number, text: "Listening variability (CV) over 90 days: {value}"}
+  skip_rate_30d: {format: share, text: "Skips {value} of songs (last 30 days)"}
+  completion_rate_30d: {format: share, text: "Finishes {value} of songs (last 30 days)"}
+  skip_rate_change_30_60: {format: number, text: "Skip-rate change vs earlier months: {value}"}
+  last_is_auto_renew: {format: flag, when_1: "Plan is on auto-renew", when_0: "Plan is not on auto-renew"}
+  share_auto_renew_365d: {format: share, text: "{value} of payments in the past year were auto-renew"}
+  last_payment_method: {format: category, text: "Pays with payment method {value}"}
+  last_plan_days: {format: days, text: "Current plan length: {value} days"}
+  last_list_price: {format: ntd, text: "Current plan list price: {value}"}
+  last_amount_paid: {format: ntd, text: "Paid {value} for the current plan"}
+  last_price_per_day: {format: number, text: "Pays {value} NTD per day of plan"}
+  last_is_free: {format: flag, when_1: "Current plan was free (paid 0)", when_0: "Current plan was paid"}
+  last_list_price_zero: {format: flag, when_1: "Current plan has a list price of 0", when_0: "Current plan has a list price"}
+  last_is_discounted: {format: flag, when_1: "Current plan was discounted", when_0: "Current plan was at full price"}
+  last_txn_is_cancel: {format: flag, when_1: "Most recent transaction was a cancellation", when_0: "Most recent transaction was not a cancellation"}
+  days_to_expiry: {format: days, text: "Membership runs out {value} days after the cutoff"}
+  days_to_latest_txn_expiry: {format: days, text: "Latest transaction sets expiry {value} days after the cutoff"}
+  n_transactions_365d: {format: count, text: "{value} payments in the past year"}
+  total_paid_365d: {format: ntd, text: "Paid {value} in the past year"}
+  n_plan_changes_365d: {format: count, text: "Changed plan {value} times in the past year"}
+  n_payment_method_changes_365d: {format: count, text: "Changed payment method {value} times in the past year"}
+  n_promo_txns_180d: {format: count, text: "{value} promotional payments in the past 6 months"}
+  n_cancels_all: {format: count, text: "Cancelled {value} times since 2015"}
+  n_cancels_365d: {format: count, text: "Cancelled {value} times in the past year"}
+  days_since_last_cancel: {format: days, text: "Last cancellation {value} days ago"}
+  days_since_last_transaction: {format: days, text: "Last payment {value} days ago"}
+  days_since_first_transaction: {format: days, text: "First payment seen {value} days ago"}
+  no_transaction_history: {format: flag, when_1: "No payment history before the cutoff", when_0: "Has payment history"}
+  tenure_days: {format: days, text: "Member for {value} days"}
+  registered_via: {format: category, text: "Registered through channel {value}"}
+  member_info_missing: {format: flag, when_1: "No member profile on file", when_0: "Member profile on file"}
+  r_score: {format: count, text: "RFM recency score {value} of 5"}
+  f_score: {format: count, text: "RFM frequency score {value} of 5"}
+  m_score: {format: count, text: "RFM spend score {value} of 5"}
+  personal_recency: {format: number, text: "Current listening gap is {value}x their usual gap"}
+  rfm_segment: {format: category, text: "RFM segment: {value}"}
+  rfm_group: {format: category, text: "Customer group: {value}"}

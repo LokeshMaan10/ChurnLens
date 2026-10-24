@@ -1,0 +1,3 @@
+is_churn,users,median_recent_min_per_day,median_earlier_min_per_day,median_recent_to_earlier_ratio,share_down_over_half,median_recent_active_days,share_inactive_recent
+0,92958,28.90950028,26.57607292,0.964295188,0.1441833947,13,0.2203360658
+1,6382,23.23342056,18.13419472,0.9169066823,0.1626449389,11,0.2254779066

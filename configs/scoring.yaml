@@ -1,0 +1,11 @@
+# Live-scoring demo: score users whose membership expires in April 2017 (snapshot "C").
+# C has no labels and is SCORING ONLY: it is the one place the scoring-only March 2017
+# logs (user_logs_v2) are used, and it never feeds training or evaluation.
+
+name: C
+cutoff: 2017-04-01
+expiry_month_start: 2017-04-01   # population: latest pre-cutoff expiry in this month
+expiry_month_end: 2017-04-30
+
+outputs:
+  scoring_dir: data/processed/{mode}/scoring

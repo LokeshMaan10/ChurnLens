@@ -1,0 +1,7 @@
+params,mean_test_score,std_test_score,mean_fit_time
+"{'clf__min_samples_leaf': 5, 'clf__max_features': 0.2, 'clf__max_depth': 24}",0.5460350126,0.01095848671,27.09253778
+"{'clf__min_samples_leaf': 5, 'clf__max_features': 0.1, 'clf__max_depth': 16}",0.5435173457,0.01235903664,14.42310991
+"{'clf__min_samples_leaf': 20, 'clf__max_features': 0.1, 'clf__max_depth': 24}",0.5394924146,0.01627044235,14.71941757
+"{'clf__min_samples_leaf': 100, 'clf__max_features': 0.2, 'clf__max_depth': 24}",0.5308471415,0.01896065987,21.96947498
+"{'clf__min_samples_leaf': 50, 'clf__max_features': 0.1, 'clf__max_depth': 16}",0.5274193128,0.01986683151,13.32052026
+"{'clf__min_samples_leaf': 100, 'clf__max_features': 0.1, 'clf__max_depth': 16}",0.5114301128,0.02169800868,12.60951023

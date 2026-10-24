@@ -1,0 +1,40 @@
+,mean_abs_shap
+last_is_auto_renew (+1),0.6434058808
+last_list_price (+2),0.2899001825
+longest_inactive_gap_90d (+22),0.2561691667
+days_since_first_transaction,0.1484506386
+days_since_last_listen (+1),0.1435747642
+last_payment_method,0.1281105209
+total_paid_365d (+1),0.09755871307
+last_txn_is_cancel,0.08085473504
+days_to_latest_txn_expiry (+1),0.0780768658
+tenure_days,0.07728487581
+days_since_last_transaction,0.07689094763
+minutes_ratio_30_60,0.06666459609
+skip_rate_90d (+3),0.06553038532
+days_since_last_cancel (+1),0.05302121305
+unique_song_share_30d (+1),0.04410326595
+completion_rate_change_30_60 (+1),0.04358390636
+minutes_ratio_7_23,0.04027769698
+n_transactions_365d,0.03599777596
+active_days_ratio_30_60,0.02956488145
+rfm_group,0.02571472774
+personal_recency,0.02523902139
+minutes_per_active_day_30d,0.02465058626
+minutes_slope_90d,0.0224271924
+registered_via,0.02236911235
+minutes_slope_30d,0.02160283715
+active_days_ratio_7_23,0.02084184369
+n_plan_changes_365d,0.01961060565
+n_promo_txns_180d,0.006011804445
+n_cancels_all,0.004293715134
+rfm_segment,0.003952486076
+n_payment_method_changes_365d,0.002953361567
+last_discount_amount,0.001153451832
+last_plan_days,0.001072493641
+last_is_free,0.0005491938467
+member_info_missing,0.0004157955191
+capped_days_90d,0.0003856077189
+last_list_price_zero,7.694715284e-05
+last_is_discounted,0
+no_transaction_history,0

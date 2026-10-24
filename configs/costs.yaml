@@ -1,0 +1,14 @@
+# Business costs for choosing the contact threshold. PLACEHOLDER ASSUMPTIONS:
+# none of these come from data or experiments yet. Replace with real figures
+# (offer_cost from finance, churn_loss from Phase 8 CLTV, save_rate from a Phase 10
+# A/B test) and re-run `make model`; no code changes are needed.
+
+currency: NTD
+offer_cost: 30        # cost of one retention action (discount / outreach) per contacted user
+churn_loss: 600       # value lost when a customer churns (~4 months of the 149 NTD plan)
+save_rate: 0.25       # share of contacted would-be churners the action retains
+
+# Policy cost per user, given calibrated churn probability p:
+#   contact:      offer_cost + p * (1 - save_rate) * churn_loss
+#   no contact:   p * churn_loss
+# Contacting pays off when p > offer_cost / (save_rate * churn_loss).

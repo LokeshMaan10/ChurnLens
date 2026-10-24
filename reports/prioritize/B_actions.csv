@@ -1,0 +1,10 @@
+action,users,selected,spend,mean_benefit
+monitor,89410,0,0,0
+auto_renew_reminder,4735,2172,10860,26.82568394
+auto_renew_incentive,1898,1233,92475,69.19532108
+win_back_offer,653,440,44000,86.05549612
+cancellation_survey,355,99,495,21.72408179
+trial_conversion_offer,112,1,50,-7.674647815
+payment_support,51,48,480,63.4640418
+plan_upgrade_offer,14,7,420,36.69426738
+general_retention_message,9,0,0,6.395586454

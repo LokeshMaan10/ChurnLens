@@ -1,0 +1,25 @@
+# Run the pipeline outputs locally:  docker compose up --build
+# Build the outputs first on the host (make pipeline), or mount a volume that has them.
+services:
+  app:
+    build: .
+    ports: ["8501:8501"]
+    volumes:
+      - ./data:/app/data:ro
+      - ./models:/app/models:ro
+      - ./reports:/app/reports
+    environment:
+      # Optional: set both to enable Claude-backed agents; otherwise agents run offline.
+      - ANTHROPIC_API_KEY
+      - CHURNLENS_MODEL
+
+  mcp:
+    build: .
+    command: ["python", "-m", "churnlens.mcp_server.server"]
+    environment:
+      - MCP_TRANSPORT=streamable-http
+    ports: ["8000:8000"]
+    volumes:
+      - ./data:/app/data:ro
+      - ./models:/app/models:ro
+      - ./reports:/app/reports
