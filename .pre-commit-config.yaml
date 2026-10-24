@@ -19,4 +19,5 @@ repos:
         name: block kaggle.json, .kaggle/ and data/
         entry: credentials or data files must never be committed
         language: fail
-        files: '(^|/)(kaggle\.json|\.kaggle/|data/)'
+        # kaggle.json / .kaggle anywhere; data/ only at the repo root (src/churnlens/data is code).
+        files: '((^|/)(kaggle\.json|\.kaggle/)|^data/)'

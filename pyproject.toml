@@ -44,5 +44,10 @@ target-version = "py311"
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B", "UP", "SIM"]
 
+[tool.ruff.lint.isort]
+# Explicit, so import grouping is the same with or without an editable install
+# (a fresh CI checkout otherwise treated churnlens as third-party).
+known-first-party = ["churnlens"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]

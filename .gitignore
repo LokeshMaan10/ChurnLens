@@ -4,7 +4,7 @@ kaggle.json
 .env
 
 # Data: never commit
-data/
+/data/
 
 # Python
 __pycache__/
@@ -12,10 +12,10 @@ __pycache__/
 .venv/
 .pytest_cache/
 .ruff_cache/
-mlruns/
+/mlruns/
 
 # Trained models
-models/
+/models/
 
 # Generated per-run artefacts that contain customer ids or are reproducible
 reports/agent_traces/
