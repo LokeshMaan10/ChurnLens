@@ -30,42 +30,42 @@
 ## 🏗️ Architecture
 
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph DATA["🗄️ Data layer"]
-        direction TB
-        RAW[(KKBox archives<br/>7 GB compressed logs)] --> STREAM[Streaming 7z reader<br/>+ hash user sample]
-        STREAM --> PQ[(Parquet)]
-        PQ --> CLEAN[Audit · pandera ·<br/>cleaning rules]
-        CLEAN --> DUCK[(DuckDB views)]
-        DUCK --> SNAP[Point-in-time snapshots<br/>A train · B test · C live<br/>+ leakage tests]
+        direction LR
+        RAW[("KKBox archives<br/>7 GB compressed logs")] --> STREAM["Streaming 7z reader<br/>+ hash user sample"]
+        STREAM --> PQ[("Parquet")]
+        PQ --> CLEAN["Audit · pandera ·<br/>cleaning rules"]
+        CLEAN --> DUCK[("DuckDB views")]
+        DUCK --> SNAP["Point-in-time snapshots<br/>A train · B test · C live<br/>+ leakage tests"]
     end
 
     subgraph ML["🧠 Modeling layer"]
-        direction TB
-        FEAT[76 features<br/>listening · plan · history · RFM] --> MODEL[LightGBM<br/>calibrated · cost threshold]
-        MODEL --> SHAP[SHAP drivers<br/>+ reason codes]
-        MODEL --> SURV[Cox survival<br/>+ CLTV]
+        direction LR
+        FEAT["76 features<br/>listening · plan · history · RFM"] --> MODEL["LightGBM<br/>calibrated · cost threshold"]
+        MODEL --> SHAP["SHAP drivers<br/>+ reason codes"]
+        MODEL --> SURV["Cox survival<br/>+ CLTV"]
     end
 
     subgraph DEC["💼 Decision layer"]
-        direction TB
-        EVAR[Value at risk<br/>P churn × CLTV] --> RULES[Rules engine<br/>YAML actions]
-        RULES --> OPT[Budget optimizer<br/>λ search + LP bound]
-        OPT --> AB[A/B design<br/>power · SRM]
+        direction LR
+        EVAR["Value at risk<br/>P churn × CLTV"] --> RULES["Rules engine<br/>YAML actions"]
+        RULES --> OPT["Budget optimizer<br/>λ search + LP bound"]
+        OPT --> AB["A/B design<br/>power · SRM"]
     end
 
     subgraph AI["🤖 Intelligence layer"]
-        direction TB
-        TOOLS[Read-only tools<br/>SQL guard] --> MCP[MCP server]
-        MCP --> AGENTS[Analyst · Planner ·<br/>Copilot · Monitor agents]
-        AGENTS --> EVAL[Golden-set eval<br/>grounding checks]
+        direction LR
+        TOOLS["Read-only tools<br/>SQL guard"] --> MCP["MCP server"]
+        MCP --> AGENTS["Analyst · Planner ·<br/>Copilot · Monitor agents"]
+        AGENTS --> EVAL["Golden-set eval<br/>grounding checks"]
     end
 
     subgraph OUT["📊 Delivery"]
-        direction TB
-        APP[Streamlit app]
-        PBI[Power BI exports]
-        MON[Drift · PSI ·<br/>retrain policy]
+        direction LR
+        APP["Streamlit app"]
+        PBI["Power BI exports"]
+        MON["Drift · PSI ·<br/>retrain policy"]
     end
 
     SNAP --> FEAT
