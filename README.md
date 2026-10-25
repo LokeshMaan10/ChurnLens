@@ -68,14 +68,7 @@ flowchart TB
         MON["Drift · PSI ·<br/>retrain policy"]
     end
 
-    SNAP --> FEAT
-    SHAP --> EVAR
-    SURV --> EVAR
-    OPT --> TOOLS
-    MODEL --> MON
-    AGENTS --> APP
-    OPT --> PBI
-    MON --> APP
+    DATA ==> ML ==> DEC ==> AI ==> OUT
 
     classDef data fill:#E3F2FD,stroke:#1E88E5,color:#0D47A1
     classDef ml fill:#E8F5E9,stroke:#43A047,color:#1B5E20
